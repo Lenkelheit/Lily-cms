@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LilyCms.BLL\LilyCms.BLL.csproj" />
     <ProjectReference Include="..\LilyCms.DataAccess\LilyCms.DataAccess.csproj" />
   </ItemGroup>
 
