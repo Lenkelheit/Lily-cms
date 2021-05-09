@@ -1,3 +1,4 @@
+using LilyCms.DataAccess.AutoMapperConfig;
 using LilyCms.DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,8 @@ namespace LilyCmsApi
             var dbConnection = Configuration.GetConnectionString("LilyCmsConnection");
 
             services.AddDbContext<LilyCmsDbContext>(options => options.UseSqlServer(dbConnection));
+
+            services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
             services.AddSwaggerGen(c =>
             {

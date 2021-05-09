@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LilyCms.DataAccess.Models
+namespace LilyCms.DomainObjects.BaseEntity
 {
     public interface IAuditable
     {
