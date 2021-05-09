@@ -14,7 +14,7 @@ namespace LilyCms.DataAccess.Configuration
         public void Configure(EntityTypeBuilder<Page> builder)
         {
             builder.ToTable(nameof(Page)).HasKey(e => e.Id);
-            builder.Property(e => e.Title).IsRequired().HasMaxLength(128);
+            builder.Property(e => e.Title).IsRequired().HasMaxLength(256);
             builder.Property(e => e.Description).HasMaxLength(512);
             builder.Property(e => e.UrlSlug).IsRequired().HasMaxLength(64);
 

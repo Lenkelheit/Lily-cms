@@ -1,2 +1,2 @@
-# Lily-cms
-A simple document oriented cms.
+# LilyCms
+A simple document oriented CMS.

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LilyCmsApi", "LilyCmsApi\LilyCmsApi.csproj", "{5F821DE2-2134-46F0-BC45-0697DE1A543A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LilyCms.DataAccess", "LilyCms.DataAccess\LilyCms.DataAccess.csproj", "{81EE98F3-49B4-4DB1-AF39-E29F8A89C02F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LilyCms.DataAccess", "LilyCms.DataAccess\LilyCms.DataAccess.csproj", "{81EE98F3-49B4-4DB1-AF39-E29F8A89C02F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LilyCms.DomainObjects", "LilyCms.DomainObjects\LilyCms.DomainObjects.csproj", "{C513B7A8-CFC9-4640-8369-3EC0CEC3D903}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{81EE98F3-49B4-4DB1-AF39-E29F8A89C02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81EE98F3-49B4-4DB1-AF39-E29F8A89C02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81EE98F3-49B4-4DB1-AF39-E29F8A89C02F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C513B7A8-CFC9-4640-8369-3EC0CEC3D903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C513B7A8-CFC9-4640-8369-3EC0CEC3D903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C513B7A8-CFC9-4640-8369-3EC0CEC3D903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C513B7A8-CFC9-4640-8369-3EC0CEC3D903}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
