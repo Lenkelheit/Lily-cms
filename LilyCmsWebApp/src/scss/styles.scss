@@ -1,0 +1,32 @@
+@import "bootstrap-config";
+
+$light-gray: #f3f3f3;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $light-gray;
+}
+
+table {
+  width: 100%;
+
+  td.footer {
+    text-align: center;
+  }
+}
+
+.container-body {
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+}
+
+.container-fluid {
+  max-width: 1400px;
+}
