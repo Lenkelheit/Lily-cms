@@ -12,11 +12,11 @@ namespace LilyCmsApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SiteController : ControllerBase
+    public class SitesController : ControllerBase
     {
         private readonly ISiteService _siteService;
 
-        public SiteController(ISiteService siteService)
+        public SitesController(ISiteService siteService)
         {
             _siteService = siteService;
         }

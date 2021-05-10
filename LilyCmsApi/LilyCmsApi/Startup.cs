@@ -38,6 +38,17 @@ namespace LilyCmsApi
             services.AddDbContext<LilyCmsDbContext>(options => options.UseSqlServer(dbConnection));
             services.AddCustomServices();
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LilyCmsApi", Version = "v1" });
@@ -57,6 +68,8 @@ namespace LilyCmsApi
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
