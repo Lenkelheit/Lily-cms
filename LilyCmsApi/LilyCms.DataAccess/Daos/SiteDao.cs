@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LilyCms.DataAccess.Context;
 using LilyCms.DataAccess.Interfaces;
+using LilyCms.DataAccess.Models;
 using LilyCms.DomainObjects.Sites;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,5 +23,15 @@ namespace LilyCms.DataAccess.Daos
             var items = await Context.Sites.ToListAsync();
             return Mapper.Map<List<SiteDto>>(items);
         }
+
+        public async Task<SiteDto> AddSiteAsync(SiteDto siteDto)
+        {
+            var newSite = Mapper.Map<Site>(siteDto);
+            newSite.CreatedAt = DateTimeOffset.Now;
+            Context.Sites.Add(newSite);
+            await Context.SaveChangesAsync();
+            return Mapper.Map<SiteDto>(newSite);
+        }
+        
     }
 }

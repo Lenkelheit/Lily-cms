@@ -30,3 +30,52 @@ table {
 .container-fluid {
   max-width: 1400px;
 }
+
+.form-field {
+  width: 100%;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+editor.is-invalid {
+  .tox-edit-area {
+    border: 1px solid red;
+  }
+}
+
+.form-group {
+  margin-bottom: 25px;
+
+  editor {
+    margin-top: 10px;
+  }
+}
+
+.invalid {
+  color: red;
+  font-size: 90%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.required::after {
+  color: red;
+  content: " *";
+}
+
+table {
+  td:first-child {
+    max-width: 100px;
+  }
+}
+
+.enabled {
+  color: green;
+}
+
+.disabled {
+  color: red;
+}
