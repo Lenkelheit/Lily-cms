@@ -10,5 +10,6 @@ namespace LilyCms.DataAccess.Interfaces
     public interface ISiteDao
     {
         Task<IEnumerable<SiteDto>> GetSitesAsync();
+        Task<SiteDto> AddSiteAsync(SiteDto siteDto);
     }
 }

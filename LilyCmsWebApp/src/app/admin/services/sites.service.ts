@@ -13,4 +13,8 @@ export class SitesService {
     getSites(): Observable<Site[]> {
         return this.http.get<Site[]>(`${this.baseUrl}/api/sites`);
     }
+
+    addSite(site: Site): Observable<Site> {
+        return this.http.post<Site>(`${this.baseUrl}/api/sites`, site);
+    }
 }
