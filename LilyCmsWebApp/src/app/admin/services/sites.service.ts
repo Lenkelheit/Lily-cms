@@ -14,7 +14,11 @@ export class SitesService {
         return this.http.get<Site[]>(`${this.baseUrl}/api/sites`);
     }
 
-    addSite(site: Site): Observable<Site> {
+    addOrUpdateSite(site: Site): Observable<Site> {
         return this.http.post<Site>(`${this.baseUrl}/api/sites`, site);
+    }
+
+    deleteSite(siteId: string): Observable<void> {
+        return this.http.delete<void>(`${this.baseUrl}/api/sites/${siteId}`);
     }
 }

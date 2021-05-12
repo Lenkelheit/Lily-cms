@@ -42,18 +42,34 @@ namespace LilyCmsApi.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<SiteDto>> AddSite(SiteDto siteDto)
+        public async Task<ActionResult<SiteDto>> AddOrUpdateSite(SiteDto siteDto)
         {
             try
             {
-                return Ok(await _siteService.AddSiteAsync(siteDto));
+                return Ok(await _siteService.AddOrUpdateSiteAsync(siteDto));
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = $"Error occurred attempting to add new site: {ex.InnerException?.Message ?? ex.Message}" });
+                return BadRequest(new { message = $"Error occurred attempting to add or update site: {ex.InnerException?.Message ?? ex.Message}" });
             }
         }
 
+        [HttpDelete]
+        [Route("{siteId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> DeleteSite(Guid siteId)
+        {
+            try
+            {
+                await _siteService.DeleteSiteAsync(siteId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Error occurred attempting to delete site: {ex.InnerException?.Message ?? ex.Message}" });
+            }
+        }
 
     }
 }

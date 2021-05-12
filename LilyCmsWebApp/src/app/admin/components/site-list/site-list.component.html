@@ -4,9 +4,9 @@
 
             <h1 class="text-center">Your Sites</h1>
 
-            <button mat-raised-button class="mb-3" (click)="addSite()">Create New Site</button>
+            <button mat-raised-button class="mb-3" (click)="addOrUpdateSite()">Create New Site</button>
 
-            <table mat-table [dataSource]="sites" class="mat-elevation-z8" #sitesTable>
+            <table mat-table [dataSource]="sites" class="mat-elevation-z8">
 
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> # </th>
@@ -38,11 +38,29 @@
                     </td>
                 </ng-container>
 
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef> Edit </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button (click)="addOrUpdateSite(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef> Delete </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button (click)="deleteSite(element)" class="delete">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
                 <!-- Disclaimer column -->
                 <ng-container matColumnDef="disclaimer">
                     <td mat-footer-cell *matFooterCellDef colspan="5" class="footer">
                         There are not any sites. Create your first one.
-                        <button mat-icon-button (click)="addSite()">
+                        <button mat-icon-button (click)="addOrUpdateSite()">
                             <mat-icon>add</mat-icon>
                         </button>
                     </td>
