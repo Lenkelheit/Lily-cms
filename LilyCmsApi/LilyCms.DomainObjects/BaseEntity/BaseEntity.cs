@@ -9,7 +9,7 @@ namespace LilyCms.DomainObjects.BaseEntity
 {
     public class BaseEntity : IBaseEntity
     {
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
         [Required]
         [StringLength(256)]
         public string Title { get; set; }

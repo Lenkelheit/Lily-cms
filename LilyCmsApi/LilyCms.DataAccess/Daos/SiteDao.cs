@@ -24,14 +24,35 @@ namespace LilyCms.DataAccess.Daos
             return Mapper.Map<List<SiteDto>>(items);
         }
 
-        public async Task<SiteDto> AddSiteAsync(SiteDto siteDto)
+        public async Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto)
         {
-            var newSite = Mapper.Map<Site>(siteDto);
-            newSite.CreatedAt = DateTimeOffset.Now;
-            Context.Sites.Add(newSite);
-            await Context.SaveChangesAsync();
-            return Mapper.Map<SiteDto>(newSite);
+            var item = await Context.Sites.FirstOrDefaultAsync(t => t.Id == siteDto.Id);
+            if (item != null)
+            {
+                siteDto.ModifiedAt = DateTimeOffset.Now;
+                Mapper.Map(siteDto, item);
+                await Context.SaveChangesAsync();
+            }
+            else
+            {
+                var newSite = Mapper.Map<Site>(siteDto);
+                newSite.CreatedAt = DateTimeOffset.Now;
+                Context.Sites.Add(newSite);
+                await Context.SaveChangesAsync();
+                item = newSite;
+            }
+            return Mapper.Map<SiteDto>(item);
         }
-        
+
+        public async Task DeleteSiteAsync(Guid siteId)
+        {
+            var item = await Context.Sites.FirstOrDefaultAsync(t => t.Id == siteId);
+            if (item != null)
+            {
+                Context.Sites.Remove(item);
+                await Context.SaveChangesAsync();
+            }
+        }
+
     }
 }

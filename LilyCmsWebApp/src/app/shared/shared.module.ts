@@ -12,6 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ToastrModule } from 'ngx-toastr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ConfirmComponent } from './modals/confirm/confirm.component';
 
 const modules = [
     MatButtonModule,
@@ -27,19 +28,26 @@ const modules = [
 @NgModule({
     declarations: [
         HeaderComponent,
-        SafeHtmlPipe
+        SafeHtmlPipe,
+        ConfirmComponent
     ],
     imports: [
         CommonModule,
         MatToolbarModule,
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot({
+            positionClass: 'toast-top-center'
+        }),
         ...modules
     ],
     exports: [
         ...modules,
         ToastrModule,
         HeaderComponent,
-        SafeHtmlPipe
+        SafeHtmlPipe,
+        ConfirmComponent
+    ],
+    entryComponents: [
+        ConfirmComponent
     ]
 })
 export class SharedModule { }

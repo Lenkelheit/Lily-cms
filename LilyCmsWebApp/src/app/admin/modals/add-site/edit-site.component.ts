@@ -5,26 +5,26 @@ import { ToastrService } from 'ngx-toastr';
 import { Site } from 'src/app/shared/models/site';
 import { Helpers } from 'src/app/shared/utilities/helpers';
 import { tinyMCEEditorOptions } from 'src/app/shared/utilities/tiny-mce-editor-options';
+import { EditSite } from '../../models/edit-site';
 import { SitesService } from '../../services/sites.service';
 import { uniqueUrlSlugValidator } from '../../validators/unique-url-slug-validator';
 
 @Component({
-    selector: 'app-add-site',
-    templateUrl: './add-site.component.html',
-    styleUrls: ['./add-site.component.scss']
+    selector: 'edit-add-site',
+    templateUrl: './edit-site.component.html',
+    styleUrls: ['./edit-site.component.scss']
 })
-export class AddSiteComponent implements OnInit {
-    site: Site = {} as Site;
+export class EditSiteComponent implements OnInit {
 
     form: FormGroup;
     formSubmitted = false;
 
     constructor(
-        private dialogRef: MatDialogRef<AddSiteComponent>,
+        private dialogRef: MatDialogRef<EditSiteComponent>,
         private fb: FormBuilder,
         private toastrService: ToastrService,
         private sitesService: SitesService,
-        @Inject(MAT_DIALOG_DATA) public urlSlugs: string[]
+        @Inject(MAT_DIALOG_DATA) public data: EditSite
     ) { }
 
     ngOnInit(): void {
@@ -46,24 +46,24 @@ export class AddSiteComponent implements OnInit {
     onSubmit() {
         this.formSubmitted = true;
         if (this.form.valid) {
-            Object.assign(this.site, this.form.value);
-            this.sitesService.addSite(this.site).subscribe((newSite: Site) => {
-                console.log(newSite);
-                this.onClose(newSite);
+            Object.assign(this.data.site, this.form.value);
+            this.sitesService.addOrUpdateSite(this.data.site).subscribe((updatedSite: Site) => {
+                console.log(updatedSite);
+                this.onClose(updatedSite);
             }, () => {
-                this.toastrService.error('Failed to create new site. Please reload the page and try again', 'Something went wrong');
+                this.toastrService.error(`Failed to ${this.data.isNewItem ? 'create new' : 'update'} site. Please reload the page and try again`, 'Something went wrong');
             });
         }
     }
 
     private createForm() {
-        console.log(this.urlSlugs);
+        console.log(this.data.usedUniqueUrls);
         this.form = this.fb.group({
-            title: [this.site.title, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
-            description: [this.site.description, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
-            urlSlug: [this.site.urlSlug, [Validators.required, Validators.minLength(Helpers.TextMinLength),
-            Validators.pattern(Helpers.UrlSlugValidator), uniqueUrlSlugValidator(this.urlSlugs)]],
-            enabled: [true],
+            title: [this.data.site.title, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
+            description: [this.data.site.description, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
+            urlSlug: [this.data.site.urlSlug, [Validators.required, Validators.minLength(Helpers.TextMinLength),
+            Validators.pattern(Helpers.UrlSlugValidator), uniqueUrlSlugValidator(this.data.usedUniqueUrls)]],
+            enabled: [!!this.data.site.enabled],
         });
     }
 }

@@ -7,14 +7,14 @@ import { SiteListComponent } from './components/site-list/site-list.component';
 import { SitesService } from './services/sites.service';
 import { SitesResolver } from './resolvers/sites.resolver';
 import { SharedModule } from '../shared/shared.module';
-import { AddSiteComponent } from './modals/add-site/add-site.component';
+import { EditSiteComponent } from './modals/add-site/edit-site.component';
 
 
 @NgModule({
     declarations: [
         AdminComponent,
         SiteListComponent,
-        AddSiteComponent
+        EditSiteComponent
     ],
     imports: [
         CommonModule,
@@ -26,7 +26,7 @@ import { AddSiteComponent } from './modals/add-site/add-site.component';
         SitesResolver
     ],
     entryComponents: [
-        AddSiteComponent
+        EditSiteComponent
     ],
 })
 export class AdminModule { }

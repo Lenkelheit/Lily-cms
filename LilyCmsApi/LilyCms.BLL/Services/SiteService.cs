@@ -23,11 +23,15 @@ namespace LilyCms.BLL.Services
             return await _siteDao.GetSitesAsync();
         }
 
-        public async Task<SiteDto> AddSiteAsync(SiteDto siteDto)
+        public async Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto)
         {
-            return await _siteDao.AddSiteAsync(siteDto);
+            return await _siteDao.AddOrUpdateSiteAsync(siteDto);
         }
 
-        
+        public async Task DeleteSiteAsync(Guid siteId)
+        {
+            await _siteDao.DeleteSiteAsync(siteId);
+        }
+
     }
 }
