@@ -1,7 +1,6 @@
-import { Site } from "src/app/shared/models/site";
+import { Site } from "src/app/shared/models/site/site";
+import { BaseEditEntity } from "./base-edit-entity";
 
-export interface EditSite {
+export interface EditSite extends BaseEditEntity {
     site: Site;
-    usedUniqueUrls: string[];
-    isNewItem: boolean;
 }

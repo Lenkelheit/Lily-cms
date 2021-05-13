@@ -7,14 +7,25 @@ import { SiteListComponent } from './components/site-list/site-list.component';
 import { SitesService } from './services/sites.service';
 import { SitesResolver } from './resolvers/sites.resolver';
 import { SharedModule } from '../shared/shared.module';
-import { EditSiteComponent } from './modals/add-site/edit-site.component';
+import { EditSiteComponent } from './modals/edit-site/edit-site.component';
+import { PagesService } from './services/pages.service';
+import { PagesResolver } from './resolvers/pages.resolver';
+import { PageListComponent } from './components/page-list/page-list.component';
+import { SiteDetailsComponent } from './components/site-details/site-details.component';
+import { SiteDetailsResolver } from './resolvers/site-details.resolver';
+import { EditPageComponent } from './modals/edit-page/edit-page.component';
+import { SiteOperationsService } from './services/site-operations.service';
+import { UrlOperationsService } from './services/url-operations.service';
 
 
 @NgModule({
     declarations: [
         AdminComponent,
         SiteListComponent,
-        EditSiteComponent
+        EditSiteComponent,
+        PageListComponent,
+        SiteDetailsComponent,
+        EditPageComponent
     ],
     imports: [
         CommonModule,
@@ -23,10 +34,16 @@ import { EditSiteComponent } from './modals/add-site/edit-site.component';
     ],
     providers: [
         SitesService,
-        SitesResolver
+        SitesResolver,
+        SiteDetailsResolver,
+        SiteOperationsService,
+        UrlOperationsService,
+        PagesService,
+        PagesResolver
     ],
     entryComponents: [
-        EditSiteComponent
+        EditSiteComponent,
+        EditPageComponent
     ],
 })
 export class AdminModule { }

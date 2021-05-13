@@ -16,10 +16,11 @@ body {
 
 table {
   width: 100%;
+}
 
-  td.footer {
-    text-align: center;
-  }
+.table-footer {
+  text-align: center;
+  background-color: white;
 }
 
 .container-body {
@@ -71,7 +72,7 @@ table {
     max-width: 120px;
   }
 
-  td:nth-last-child(-n + 2) {
+  td:nth-last-child(-n + 3) {
     max-width: 40px;
   }
 }
@@ -92,4 +93,23 @@ td.mat-footer-cell:last-of-type {
 
 .delete {
   color: rgb(201, 14, 14);
+}
+
+.edit {
+  color: rgb(112, 112, 255);
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 5px;
+
+  &:not(:first-child) {
+    padding-top: 10px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid lightgray;
+  }
 }

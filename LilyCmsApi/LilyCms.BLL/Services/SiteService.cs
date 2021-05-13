@@ -33,5 +33,15 @@ namespace LilyCms.BLL.Services
             await _siteDao.DeleteSiteAsync(siteId);
         }
 
+        public async Task<SiteDetailsDto> GetSiteDetailsAsync(string siteUrl)
+        {
+            return await _siteDao.GetSiteDetailsAsync(siteUrl);
+        }
+
+        public async Task<bool> IsSiteUrlFreeAsync(string siteUrl)
+        {
+            return await _siteDao.IsSiteUrlFreeAsync(siteUrl);
+        }
+
     }
 }

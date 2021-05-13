@@ -25,7 +25,7 @@ namespace LilyCmsApi.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<List<SiteDto>>> GetSites()
+        public async Task<ActionResult<IEnumerable<SiteDto>>> GetSites()
         {
             try
             {
@@ -56,7 +56,7 @@ namespace LilyCmsApi.Controllers
 
         [HttpDelete]
         [Route("{siteId}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteSite(Guid siteId)
         {
@@ -70,6 +70,56 @@ namespace LilyCmsApi.Controllers
                 return BadRequest(new { message = $"Error occurred attempting to delete site: {ex.InnerException?.Message ?? ex.Message}" });
             }
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("{siteUrl}")]
+        public async Task<ActionResult<SiteDetailsDto>> GetSiteDetails(string siteUrl)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(siteUrl))
+                {
+                    return BadRequest("Url is not valid");
+                }
+                var site = await _siteService.GetSiteDetailsAsync(siteUrl);
+
+                if (site == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(site);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Error occurred attempting to retrieve site with url {siteUrl}: {ex.InnerException?.Message ?? ex.Message}" });
+            }
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("isUrlFree")]
+        public async Task<ActionResult<bool>> IsSiteUrlFree(string siteUrl)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(siteUrl))
+                {
+                    return BadRequest("Url is not valid");
+                }
+
+                return Ok(await _siteService.IsSiteUrlFreeAsync(siteUrl));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Error occurred attempting to check if site url {siteUrl} is free: {ex.InnerException?.Message ?? ex.Message}" });
+            }
+        }
+
 
     }
 }
