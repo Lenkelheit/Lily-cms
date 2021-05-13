@@ -2,6 +2,7 @@ export const tinyMCEEditorOptions: Record<string, any> = {
     base_url: '/tinymce',
     suffix: '.min',
     menubar: false,
+    selector: 'textarea', // todo
     plugins: [
         'autolink lists link image',
         'code autoresize paste'

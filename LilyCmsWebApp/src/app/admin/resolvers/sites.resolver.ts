@@ -5,7 +5,7 @@ import {
     ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Site } from 'src/app/shared/models/site';
+import { Site } from 'src/app/shared/models/site/site';
 import { SitesService } from '../services/sites.service';
 
 @Injectable()

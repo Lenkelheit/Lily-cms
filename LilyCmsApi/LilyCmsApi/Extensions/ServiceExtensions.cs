@@ -16,6 +16,8 @@ namespace LilyCmsApi.Extensions
         {
             services.AddScoped<ISiteDao, SiteDao>();
             services.AddScoped<ISiteService, SiteService>();
+            services.AddScoped<IPageDao, PageDao>();
+            services.AddScoped<IPageService, PageService>();
         }
     }
 }
