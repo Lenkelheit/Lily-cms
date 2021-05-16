@@ -6,7 +6,8 @@ import { EditSiteComponent } from '../../modals/edit-site/edit-site.component';
 import { filter } from 'rxjs/operators';
 import { EditSite } from '../../models/edit-site';
 import { ToastrService } from 'ngx-toastr';
-import { SiteOperationsService } from '../../services/site-operations.service';
+import { EntityOperationsService } from '../../services/entity-operations.service';
+import { EntityType } from '../../models/enums/entity-type';
 
 @Component({
     selector: 'app-site-list',
@@ -21,7 +22,7 @@ export class SiteListComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private dialog: MatDialog,
-        private siteOperationsService: SiteOperationsService,
+        private entityOperationsService: EntityOperationsService,
         private toastrService: ToastrService
     ) { }
 
@@ -51,7 +52,7 @@ export class SiteListComponent implements OnInit {
     }
 
     deleteSite(site: Site) {
-        this.siteOperationsService.deleteSite(site).subscribe(() => {
+        this.entityOperationsService.deleteEntity(site, EntityType.Site).subscribe(() => {
             this.sites = this.sites.filter(s => s.id !== site.id);
             this.toastrService.success(`The "${site.title}" site has been successfully deleted`, 'Success');
         }, () => {

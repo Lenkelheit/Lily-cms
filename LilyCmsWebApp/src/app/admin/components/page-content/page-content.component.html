@@ -1,0 +1,64 @@
+<form [formGroup]="form">
+
+    <div class="d-flex align-items-center mb-4">
+        <h1 class="mb-0">Page Content for {{page.title}}</h1>
+        <!-- todo: add preview -->
+        <!-- <button (click)="onPreview()">Preview</button>-->
+        <button mat-raised-button color="primary" class="btn-save ml-3" (click)="savePageContent()">Save</button>
+    </div>
+
+    <div formArrayName="pageAreas">
+
+        <div class="text-center first-page-area mb-5" *ngIf="!page.pageAreas.length">
+            <p>Add Your First Page Area</p>
+            <button mat-raised-button color="accent" (click)="editPagetArea(-1, true)">Add Page Area</button>
+        </div>
+
+        <div *ngFor="let pageArea of page.pageAreas; let i = index">
+            <div [formGroupName]="i" [ngClass]="{'hidden-area': !pageAreas.value[i].enabled}"
+                class="details-block mat-elevation-z8 p-3 mb-4">
+
+                <div class="d-flex align-items-center mb-3">
+                    <h3 class="mb-0 page-area-header">{{pageArea.title}}</h3>
+
+                    <button mat-icon-button [matMenuTriggerFor]="menu" class="ml-2">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+
+                    <mat-menu #menu="matMenu">
+                        <mat-slide-toggle formControlName="enabled" (click)="$event.stopPropagation()"
+                            class="ml-3 mt-2">Enabled
+                        </mat-slide-toggle>
+
+                        <button mat-menu-item color="primary" (click)="editPagetArea(i, false)">
+                            <mat-icon>edit</mat-icon>
+                            <span>Properties</span>
+                        </button>
+                        <button mat-menu-item color="warn" (click)="onDeletePageArea(i)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </mat-menu>
+                </div>
+
+                <div *ngIf="pageArea.description" [innerHTML]="pageArea.description | safeHtml" class="mb-3"
+                    style="font-size: .875rem;"></div>
+
+                <div [ngSwitch]="pageArea.contentType">
+                    <div *ngSwitchCase="ContentType.HtmlContent">
+
+                        <div class="form-group mb-0">
+                            <editor formControlName="content" [init]="tinyMCEEditorOptions">
+                            </editor>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-5">
+                <button mat-raised-button color="primary" (click)="editPagetArea(i, true)">Add Page Area</button>
+            </div>
+        </div>
+
+    </div>
+</form>

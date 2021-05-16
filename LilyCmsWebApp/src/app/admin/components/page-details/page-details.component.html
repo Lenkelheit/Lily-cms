@@ -1,0 +1,48 @@
+<div class="container-fluid container-body">
+    <div class="row">
+        <div class="col-3">
+            <a mat-raised-button [routerLink]="['/admin/sites', siteUrl]">
+                <mat-icon>arrow_back</mat-icon> Return back to pages
+            </a>
+
+            <div class="details-block mat-elevation-z8 p-4 mt-4">
+                <h1>Page details</h1>
+                <div class="group">
+                    <h4>Title</h4>
+                    <p>{{page.title}} </p>
+                </div>
+
+                <div class="group">
+                    <h4>Description</h4>
+                    <span [innerHTML]="page.description | safeHtml"></span>
+                </div>
+
+                <div class="group">
+                    <h4>Url</h4>
+                    <p>{{page.urlSlug}} </p>
+                </div>
+
+                <div class="group">
+                    <h4>Enabled</h4>
+                    <p>
+                        <mat-icon [ngClass]="page.enabled ? 'enabled' : 'disabled'">{{page.enabled ? 'check' :
+                            'error_outline'}}</mat-icon>
+                    </p>
+                </div>
+
+                <div class="group justify-content-between">
+                    <button mat-icon-button (click)="editPage()" class="edit">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deletePage()" class="delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <app-page-content [page]="page"></app-page-content>
+        </div>
+    </div>
+</div>

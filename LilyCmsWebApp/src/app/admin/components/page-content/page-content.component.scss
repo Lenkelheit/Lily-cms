@@ -1,0 +1,24 @@
+$light-blue: rgb(202, 235, 255);
+$border-blue: #6bc8ff;
+
+.first-page-area {
+  background-color: $light-blue;
+  border: 2px solid $border-blue;
+  padding: 10px;
+
+  p {
+    font-size: large;
+  }
+}
+
+.btn-save {
+  width: 100px;
+}
+
+.hidden-area {
+  background-color: #dedede;
+}
+
+.page-area-header {
+  font-weight: 500;
+}

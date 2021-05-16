@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{data.isNewItem ? 'Add New' : 'Edit'}} Page</h1>
+<h1 mat-dialog-title>{{data.isNewItem ? 'Add New' : 'Edit'}} Page Area</h1>
 
 <div mat-dialog-content>
     <form [formGroup]="form">
@@ -21,14 +21,16 @@
 
         <div class="form-group">
             <mat-form-field appearance="outline" class="form-field"
-                [class.mat-form-field-invalid]="formSubmitted && urlSlug.errors">
-                <mat-label>Url</mat-label>
-                <input type="text" formControlName="urlSlug" matInput required />
+                [class.mat-form-field-invalid]="formSubmitted && contentType.errors">
+                <mat-label>Content Type</mat-label>
+                <mat-select formControlName="contentType" required>
+                    <mat-option>- Select Content Type -</mat-option>
+                    <mat-option *ngFor="let item of contentTypeKeys" [value]="ContentType[item]">
+                        {{ContentTypeNames[item]}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
-            <div *ngIf="formSubmitted && urlSlug.errors && !urlSlug.errors?.notUniqueUrl" class="invalid">Lowercase Url
-                with no spaces is required.</div>
-            <div *ngIf="formSubmitted && urlSlug.errors?.notUniqueUrl" class="invalid">This url is already used.
-            </div>
+            <div *ngIf="formSubmitted && contentType.errors" class="invalid">Content Type is required.</div>
         </div>
 
         <mat-slide-toggle formControlName="enabled">Enabled</mat-slide-toggle>
@@ -37,7 +39,5 @@
 
 <div mat-dialog-actions class="float-right">
     <button mat-raised-button (click)="onClose()">Cancel</button>
-    <button mat-raised-button *ngIf="data.isNewItem" color="accent" (click)="onSubmit(true)">Create and add page
-        areas</button>
     <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
 </div>

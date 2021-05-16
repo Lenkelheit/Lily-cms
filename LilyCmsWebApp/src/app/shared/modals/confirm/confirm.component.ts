@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ConfirmationDialogData } from '../../models/confirmation-dialog-data';
+import { ConfirmationDialogData } from '../../models/dialog/confirmation-dialog-data';
 import { ConfirmationDialogResult } from '../../models/enums/confirmation-dialog-result';
 
 @Component({

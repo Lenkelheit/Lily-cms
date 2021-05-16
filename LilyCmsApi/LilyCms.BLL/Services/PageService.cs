@@ -39,6 +39,14 @@ namespace LilyCms.BLL.Services
             return await _pageDao.IsPageUrlFreeAsync(pageUrl, siteId);
         }
 
-        
+        public async Task<PageDetailsDto> GetPageDetailsAsync(string siteUrl, string pageUrl)
+        {
+            return await _pageDao.GetPageDetailsAsync(siteUrl, pageUrl);
+        }
+
+        public async Task<PageDetailsDto> SavePageContentAsync(PageDetailsDto pageDetailsDto)
+        {
+            return await _pageDao.SavePageContentAsync(pageDetailsDto);
+        }
     }
 }

@@ -13,6 +13,9 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { ToastrModule } from 'ngx-toastr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ConfirmComponent } from './modals/confirm/confirm.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 
 const modules = [
     MatButtonModule,
@@ -23,13 +26,16 @@ const modules = [
     ReactiveFormsModule,
     MatSlideToggleModule,
     EditorModule,
+    MatMenuModule,
+    MatSelectModule
 ];
 
 @NgModule({
     declarations: [
         HeaderComponent,
         SafeHtmlPipe,
-        ConfirmComponent
+        ConfirmComponent,
+        NotFoundComponent
     ],
     imports: [
         CommonModule,
@@ -44,7 +50,8 @@ const modules = [
         ToastrModule,
         HeaderComponent,
         SafeHtmlPipe,
-        ConfirmComponent
+        ConfirmComponent,
+        NotFoundComponent
     ],
     entryComponents: [
         ConfirmComponent

@@ -7,8 +7,8 @@ import { Site } from 'src/app/shared/models/site/site';
 import { SiteDetails } from 'src/app/shared/models/site/site-details';
 import { EditSiteComponent } from '../../modals/edit-site/edit-site.component';
 import { EditSite } from '../../models/edit-site';
-import { SiteOperationsService } from '../../services/site-operations.service';
-import { SitesService } from '../../services/sites.service';
+import { EntityType } from '../../models/enums/entity-type';
+import { EntityOperationsService } from '../../services/entity-operations.service';
 
 @Component({
     selector: 'app-site-details',
@@ -23,8 +23,7 @@ export class SiteDetailsComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private dialog: MatDialog,
-        private route: ActivatedRoute,
-        private siteOperationsService: SiteOperationsService,
+        private entityOperationsService: EntityOperationsService,
         private toastrService: ToastrService
     ) { }
 
@@ -51,7 +50,7 @@ export class SiteDetailsComponent implements OnInit {
     }
 
     deleteSite() {
-        this.siteOperationsService.deleteSite(this.site).subscribe(() => {
+        this.entityOperationsService.deleteEntity(this.site, EntityType.Site).subscribe(() => {
             this.toastrService.success(`The "${this.site.title}" site has been successfully deleted`, 'Success');
             this.router.navigate(['./admin/sites']);
         }, () => {

@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';
 import { SiteDetails } from 'src/app/shared/models/site/site-details';
 import { SitesService } from '../services/sites.service';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class SiteDetailsResolver implements Resolve<SiteDetails> {
 
     constructor(private sitesService: SitesService) {

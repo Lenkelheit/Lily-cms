@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -103,6 +104,44 @@ namespace LilyCmsApi.Controllers
             }
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("{siteUrl}/{pageUrl}")]
+        public async Task<ActionResult<PageDetailsDto>> GetPageDetails([Required] string siteUrl, [Required] string pageUrl)
+        {
+            try
+            {
+                var page = await _pageService.GetPageDetailsAsync(siteUrl, pageUrl);
 
+                if (page == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(page);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Error occurred attempting to retrieve page with site url {siteUrl} and page url {pageUrl}: {ex.InnerException?.Message ?? ex.Message}" });
+            }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("pageContent")]
+        public async Task<ActionResult<PageDetailsDto>> SavePageContent(PageDetailsDto pageDetailsDto)
+        {
+            try
+            {
+                return Ok(await _pageService.SavePageContentAsync(pageDetailsDto));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Error occurred attempting to save page content: {ex.InnerException?.Message ?? ex.Message}" });
+            }
+        }
     }
 }

@@ -14,8 +14,12 @@ import { PageListComponent } from './components/page-list/page-list.component';
 import { SiteDetailsComponent } from './components/site-details/site-details.component';
 import { SiteDetailsResolver } from './resolvers/site-details.resolver';
 import { EditPageComponent } from './modals/edit-page/edit-page.component';
-import { SiteOperationsService } from './services/site-operations.service';
+import { EntityOperationsService } from './services/entity-operations.service';
 import { UrlOperationsService } from './services/url-operations.service';
+import { PageDetailsComponent } from './components/page-details/page-details.component';
+import { PageDetailsResolver } from './resolvers/page-details.resolver';
+import { PageContentComponent } from './components/page-content/page-content.component';
+import { EditPageAreaComponent } from './modals/edit-page-area/edit-page-area.component';
 
 
 @NgModule({
@@ -25,7 +29,10 @@ import { UrlOperationsService } from './services/url-operations.service';
         EditSiteComponent,
         PageListComponent,
         SiteDetailsComponent,
-        EditPageComponent
+        EditPageComponent,
+        PageDetailsComponent,
+        PageContentComponent,
+        EditPageAreaComponent
     ],
     imports: [
         CommonModule,
@@ -36,14 +43,16 @@ import { UrlOperationsService } from './services/url-operations.service';
         SitesService,
         SitesResolver,
         SiteDetailsResolver,
-        SiteOperationsService,
+        EntityOperationsService,
         UrlOperationsService,
         PagesService,
-        PagesResolver
+        PagesResolver,
+        PageDetailsResolver
     ],
     entryComponents: [
         EditSiteComponent,
-        EditPageComponent
+        EditPageComponent,
+        EditPageAreaComponent
     ],
 })
 export class AdminModule { }

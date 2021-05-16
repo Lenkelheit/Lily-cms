@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from 'src/app/shared/models/page/page';
+import { PageDetails } from 'src/app/shared/models/page/page-details';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -24,5 +25,13 @@ export class PagesService {
 
     isPageUrlFree(pageUrl: string, siteId: string): Observable<boolean> {
         return this.http.get<boolean>(`${this.baseUrl}/api/pages/isUrlFree?pageUrl=${pageUrl}&siteId=${siteId}`);
+    }
+
+    getPageDetails(siteUrl: string, pageUrl: string): Observable<PageDetails> {
+        return this.http.get<PageDetails>(`${this.baseUrl}/api/pages/${siteUrl}/${pageUrl}`);
+    }
+
+    savePageContent(pageDetails: PageDetails): Observable<PageDetails> {
+        return this.http.post<PageDetails>(`${this.baseUrl}/api/pages/pageContent`, pageDetails);
     }
 }
