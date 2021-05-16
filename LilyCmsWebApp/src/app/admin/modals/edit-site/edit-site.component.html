@@ -36,7 +36,7 @@
 </div>
 
 <div mat-dialog-actions class="float-right">
-    <button mat-button (click)="onClose()">Cancel</button>
-    <button mat-button *ngIf="data.isNewItem" color="primary" (click)="onSubmit(true)">Create and add pages</button>
-    <button mat-button color="primary" (click)="onSubmit()">Submit</button>
+    <button mat-raised-button (click)="onClose()">Cancel</button>
+    <button mat-raised-button *ngIf="data.isNewItem" color="accent" (click)="onSubmit(true)">Create and add pages</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
 </div>

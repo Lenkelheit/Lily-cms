@@ -13,5 +13,7 @@ namespace LilyCms.BLL.Interfaces
         Task<PageDto> AddOrUpdatePageAsync(PageDto pageDto);
         Task DeletePageAsync(Guid pageId);
         Task<bool> IsPageUrlFreeAsync(string pageUrl, Guid siteId);
+        Task<PageDetailsDto> GetPageDetailsAsync(string siteUrl, string pageUrl);
+        Task<PageDetailsDto> SavePageContentAsync(PageDetailsDto pageDetailsDto);
     }
 }

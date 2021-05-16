@@ -1,2 +1,2 @@
 # LilyCms
-A simple document oriented CMS.
+A simple CMS oriented for creating documentation.
