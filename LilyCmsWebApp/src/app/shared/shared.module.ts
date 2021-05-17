@@ -16,6 +16,7 @@ import { ConfirmComponent } from './modals/confirm/confirm.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { RouterModule } from '@angular/router';
 
 const modules = [
     MatButtonModule,
@@ -39,6 +40,7 @@ const modules = [
     ],
     imports: [
         CommonModule,
+        RouterModule,
         MatToolbarModule,
         ToastrModule.forRoot({
             positionClass: 'toast-top-center'

@@ -4,6 +4,9 @@
             <a mat-raised-button routerLink="/admin/sites">
                 <mat-icon>arrow_back</mat-icon> Return back to sites
             </a>
+            <a mat-raised-button [routerLink]="['/user', site.urlSlug]" target="_blank" class="float-right">
+                Visit site <mat-icon>open_in_new</mat-icon>
+            </a>
 
             <div class="details-block mat-elevation-z8 p-4 mt-4">
                 <h1>Site details</h1>

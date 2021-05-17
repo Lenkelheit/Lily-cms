@@ -1,0 +1,30 @@
+<div class="title-background">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h1 class="mb-0">Welcome on {{site.title}}!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-page text-center">
+    <p class="mb-5 description" [innerHTML]="site.description | safeHtml"></p>
+    <p class="mb-3">Discover our site</p>
+    <p class="mb-5">Our pages</p>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div *ngFor="let page of site.pages" class="text-left mb-4">
+                    <p class="mb-3">
+                        <a [routerLink]="[page.urlSlug]" target="_blank">{{page.title}}</a>
+                    </p>
+                    <p [innerHTML]="page.description | safeHtml"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

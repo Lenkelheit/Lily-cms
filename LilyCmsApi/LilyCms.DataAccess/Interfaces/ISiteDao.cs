@@ -12,7 +12,7 @@ namespace LilyCms.DataAccess.Interfaces
         Task<IEnumerable<SiteDto>> GetSitesAsync();
         Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto);
         Task DeleteSiteAsync(Guid siteId);
-        Task<SiteDetailsDto> GetSiteDetailsAsync(string siteUrl);
+        Task<SiteDetailsDto> GetSiteDetailsAsync(string siteUrl, bool isUserView);
         Task<bool> IsSiteUrlFreeAsync(string siteUrl);
     }
 }

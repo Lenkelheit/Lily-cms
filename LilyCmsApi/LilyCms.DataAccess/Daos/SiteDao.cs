@@ -54,11 +54,11 @@ namespace LilyCms.DataAccess.Daos
             }
         }
 
-        public async Task<SiteDetailsDto> GetSiteDetailsAsync(string siteUrl)
+        public async Task<SiteDetailsDto> GetSiteDetailsAsync(string siteUrl, bool isUserView)
         {
             var item = await Context.Sites
-                .Include(e => e.Pages)
-                .FirstOrDefaultAsync(e => e.UrlSlug == siteUrl);
+                .Include(e => e.Pages.Where(e => isUserView ? e.Enabled : true))
+                .FirstOrDefaultAsync(e => isUserView ? (e.UrlSlug == siteUrl && e.Enabled) : e.UrlSlug == siteUrl);
             return Mapper.Map<SiteDetailsDto>(item);
         }
 
