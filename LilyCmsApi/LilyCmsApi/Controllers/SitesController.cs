@@ -84,7 +84,7 @@ namespace LilyCmsApi.Controllers
                 {
                     return BadRequest("Url is not valid");
                 }
-                var site = await _siteService.GetSiteDetailsAsync(siteUrl);
+                var site = await _siteService.GetSiteDetailsAsync(siteUrl, isUserView: false);
 
                 if (site == null)
                 {
