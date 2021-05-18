@@ -6,12 +6,12 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Page } from 'src/app/shared/models/page/page';
-import { PagesService } from '../services/pages.service';
+import { UserPagesService } from '../services/user-pages.service';
 
 @Injectable()
-export class PagesResolver implements Resolve<Page[]> { // todo: maybe remove it and related stuff
+export class PagesResolver implements Resolve<Page[]> {
 
-    constructor(private pagesService: PagesService) {
+    constructor(private pagesService: UserPagesService) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Page[]> {

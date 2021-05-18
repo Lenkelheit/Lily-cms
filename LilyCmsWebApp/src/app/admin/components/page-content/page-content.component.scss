@@ -1,5 +1,4 @@
-$light-blue: rgb(202, 235, 255);
-$border-blue: #6bc8ff;
+@import "src/scss/variables";
 
 .first-page-area {
   background-color: $light-blue;
@@ -17,8 +16,4 @@ $border-blue: #6bc8ff;
 
 .hidden-area {
   background-color: #dedede;
-}
-
-.page-area-header {
-  font-weight: 500;
 }

@@ -37,6 +37,7 @@ namespace LilyCms.DataAccess.Daos
             {
                 var newSite = Mapper.Map<Site>(siteDto);
                 newSite.CreatedAt = DateTimeOffset.Now;
+                newSite.ModifiedAt = newSite.CreatedAt;
                 Context.Sites.Add(newSite);
                 await Context.SaveChangesAsync();
                 item = newSite;
@@ -58,7 +59,8 @@ namespace LilyCms.DataAccess.Daos
         {
             var item = await Context.Sites
                 .Include(e => e.Pages.Where(e => isUserView ? e.Enabled : true))
-                .FirstOrDefaultAsync(e => isUserView ? (e.UrlSlug == siteUrl && e.Enabled) : e.UrlSlug == siteUrl);
+                .Where(e => e.UrlSlug == siteUrl)
+                .FirstOrDefaultAsync(e => isUserView ? e.Enabled : true);
             return Mapper.Map<SiteDetailsDto>(item);
         }
 

@@ -12,7 +12,6 @@ export class SiteComponent implements OnInit {
     site: SiteDetails;
 
     constructor(
-        private router: Router,
         private activatedRoute: ActivatedRoute,
     ) { }
 

@@ -9,7 +9,6 @@ import { SitesResolver } from './resolvers/sites.resolver';
 import { SharedModule } from '../shared/shared.module';
 import { EditSiteComponent } from './modals/edit-site/edit-site.component';
 import { PagesService } from './services/pages.service';
-import { PagesResolver } from './resolvers/pages.resolver';
 import { PageListComponent } from './components/page-list/page-list.component';
 import { SiteDetailsComponent } from './components/site-details/site-details.component';
 import { SiteDetailsResolver } from './resolvers/site-details.resolver';
@@ -46,7 +45,6 @@ import { EditPageAreaComponent } from './modals/edit-page-area/edit-page-area.co
         EntityOperationsService,
         UrlOperationsService,
         PagesService,
-        PagesResolver,
         PageDetailsResolver
     ],
     entryComponents: [

@@ -24,33 +24,6 @@ namespace LilyCmsApi.Controllers
             _pageService = pageService;
         }
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("{siteUrl}")]
-        public async Task<ActionResult<IEnumerable<PageDto>>> GetPages(string siteUrl)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(siteUrl))
-                {
-                    return BadRequest("Url is not valid");
-                }
-                var pages = await _pageService.GetPagesAsync(siteUrl);
-
-                if (pages == null)
-                {
-                    return NotFound(new { message = $"There is no site with such url: {siteUrl}" });
-                }
-
-                return Ok(pages);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = $"Error occurred attempting to retrieve pages for site with url {siteUrl}: {ex.InnerException?.Message ?? ex.Message}" });
-            }
-        }
-
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -113,7 +86,7 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
-                var page = await _pageService.GetPageDetailsAsync(siteUrl, pageUrl);
+                var page = await _pageService.GetPageDetailsAsync(siteUrl, pageUrl, isUserView: false);
 
                 if (page == null)
                 {

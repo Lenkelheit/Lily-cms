@@ -1,0 +1,45 @@
+<div class="container-fluid container-body">
+    <div class="row">
+        <div class="col-8 ml-xl-5">
+            <div class="page-details mb-5">
+                <div class="text-center mb-4">
+                    <h1>{{pageDetails.title}}</h1>
+                </div>
+                <p class="date">
+                    Created: {{pageDetails.createdAt | date: 'MMMM d, y, h:mm a'}}
+                </p>
+                <p *ngIf="pageDetails.modifiedAt" class="date">
+                    Last Modified: {{pageDetails.modifiedAt | date: 'MMMM d, y, h:mm a'}}
+                </p>
+                <p class="description" [innerHTML]="pageDetails.description | safeHtml"></p>
+            </div>
+
+            <div class="content-block">
+                <div *ngFor="let pageArea of pageDetails.pageAreas" class="mb-5">
+                    <h3 class="page-area-header">{{pageArea.title}}</h3>
+                    <div class=paragraph-note>
+                        <p>Paragraph note:</p>
+                        <span [innerHTML]="pageArea.description | safeHtml"></span>
+                    </div>
+
+                    <div [ngSwitch]="pageArea.contentType">
+                        <div *ngSwitchCase="ContentType.HtmlContent">
+                            <div [innerHTML]="pageArea.content | safeHtml"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="pages-links text-center mat-elevation-z8 p-4">
+                <p class="pages-header">Pages</p>
+                <div *ngFor="let page of pages">
+                    <p class="mb-3">
+                        <a [routerLink]="['../', page.urlSlug]">{{page.title}}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

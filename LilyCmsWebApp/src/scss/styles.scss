@@ -1,6 +1,5 @@
 @import "bootstrap-config";
-
-$light-gray: #f3f3f3;
+@import "variables";
 
 html,
 body {
@@ -120,5 +119,9 @@ td.mat-footer-cell:last-of-type {
 }
 
 h1 {
+  font-weight: 500 !important;
+}
+
+.page-area-header {
   font-weight: 500 !important;
 }

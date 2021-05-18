@@ -11,10 +11,6 @@ export class PagesService {
 
     constructor(private http: HttpClient) { }
 
-    getPages(siteUrl: string): Observable<Page[]> {
-        return this.http.get<Page[]>(`${this.baseUrl}/api/pages/${siteUrl}`);
-    }
-
     addOrUpdatePage(page: Page): Observable<Page> {
         return this.http.post<Page>(`${this.baseUrl}/api/pages`, page);
     }
