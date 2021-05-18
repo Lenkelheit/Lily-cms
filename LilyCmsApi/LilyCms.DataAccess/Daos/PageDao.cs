@@ -20,12 +20,12 @@ namespace LilyCms.DataAccess.Daos
 
         public async Task<IEnumerable<PageDto>> GetPagesAsync(string siteUrl)
         {
-            var existsSite = await Context.Sites.AnyAsync(s => s.UrlSlug == siteUrl);
+            var existsSite = await Context.Sites.AnyAsync(s => s.UrlSlug == siteUrl && s.Enabled);
             if (!existsSite)
             {
                 return null;
             }
-            var items = await Context.Pages.Where(page => page.Site.UrlSlug == siteUrl).ToListAsync();
+            var items = await Context.Pages.Where(page => page.Site.UrlSlug == siteUrl && page.Enabled).ToListAsync();
             return Mapper.Map<List<PageDto>>(items);
         }
 
@@ -42,6 +42,7 @@ namespace LilyCms.DataAccess.Daos
             {
                 var newItem = Mapper.Map<Page>(pageDto);
                 newItem.CreatedAt = DateTimeOffset.Now;
+                newItem.ModifiedAt = newItem.CreatedAt;
                 Context.Pages.Add(newItem);
                 await Context.SaveChangesAsync();
                 item = newItem;
@@ -64,11 +65,12 @@ namespace LilyCms.DataAccess.Daos
             return !(await Context.Pages.AnyAsync(e => e.UrlSlug == pageUrl && e.SiteId == siteId));
         }
 
-        public async Task<PageDetailsDto> GetPageDetailsAsync(string siteUrl, string pageUrl)
+        public async Task<PageDetailsDto> GetPageDetailsAsync(string siteUrl, string pageUrl, bool isUserView)
         {
             var item = await Context.Pages
-                .Include(e => e.PageAreas)
-                .FirstOrDefaultAsync(e => e.UrlSlug == pageUrl && e.Site.UrlSlug == siteUrl);
+                .Include(e => e.PageAreas.Where(e => isUserView ? e.Enabled : true))
+                .Where(e => e.UrlSlug == pageUrl && e.Site.UrlSlug == siteUrl)
+                .FirstOrDefaultAsync(e => isUserView ? e.Enabled : true);
             return Mapper.Map<PageDetailsDto>(item);
         }
 

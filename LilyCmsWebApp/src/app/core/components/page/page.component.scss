@@ -1,0 +1,47 @@
+@import "src/scss/variables";
+
+.container-body {
+  font-size: 1.05rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.description,
+a {
+  font-size: 1.2rem;
+}
+
+.date {
+  font-size: 0.9rem;
+}
+
+.pages-links {
+  border: 2px solid #d6d6d6;
+  margin-top: 230px;
+  position: sticky;
+  top: 230px;
+}
+
+.page-area-header,
+.pages-header {
+  font-size: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ababab;
+}
+
+.page-area-header {
+  font-size: 30px;
+}
+
+.content-block {
+  margin-bottom: 150px;
+}
+
+.paragraph-note {
+  background-color: $light-blue;
+  border: 2px solid $border-blue;
+  padding: 10px 10px 0;
+  margin-bottom: 30px;
+}
