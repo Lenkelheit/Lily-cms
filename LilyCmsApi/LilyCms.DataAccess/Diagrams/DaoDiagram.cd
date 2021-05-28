@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LilyCms.DataAccess.Daos.SiteDao">
+    <Position X="3.25" Y="3.25" Width="2.25" />
+    <InheritanceLine Type="LilyCms.DataAccess.Daos.BaseDao" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="2.247" />
+        <Point X="5.75" Y="2.875" />
+        <Point X="4.656" Y="2.875" />
+        <Point X="4.656" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAIAAAgAAAAAAAAAAAAACAABAAAAAA=</HashCode>
+      <FileName>Daos\SiteDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LilyCms.DataAccess.Daos.PageDao">
+    <Position X="6" Y="3.25" Width="2.5" />
+    <InheritanceLine Type="LilyCms.DataAccess.Daos.BaseDao" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="2.247" />
+        <Point X="5.75" Y="2.875" />
+        <Point X="6.938" Y="2.875" />
+        <Point X="6.938" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAEAAAAAAABAAAAAQAAgAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Daos\PageDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.606" />
+  </Class>
+  <Class Name="LilyCms.DataAccess.Daos.BaseDao">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Daos\BaseDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
