@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LilyCms.DataAccess.Models.Site">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAgAMAgACAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\Site.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.242" />
+  </Class>
+  <Class Name="LilyCms.DataAccess.Models.Page">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABEAAggMAAACAAAAAAAAAAAAAAAAgAAAACAAA=</HashCode>
+      <FileName>Models\Page.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.21" />
+  </Class>
+  <Class Name="LilyCms.DataAccess.Models.PageArea">
+    <Position X="8" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAgAwAMAAACAAAAAAAAAAAAAAAAAQAAAAAQA=</HashCode>
+      <FileName>Models\PageArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LilyCms.DataAccess.Models.ContentType">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ContentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LilyCms.DomainObjects.BaseEntity.IBaseEntity">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="LilyCms.DomainObjects.BaseEntity.IAuditable">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="LilyCms.DataAccess.Models.Enums.ContentType">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Enums\ContentType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
