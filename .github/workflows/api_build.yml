@@ -1,17 +1,17 @@
 name: Test Build API Project
 
 env:
-  API_FOLDER: LilyCmsApi
+  API_FOLDER: 'LilyCmsApi'
   
 on:
   push:
     branches: [ main ]
     paths:
-      - ${{env.API_FOLDER}}/**
+      - LilyCmsApi/**
   pull_request:
     branches: [ main ]
     paths:
-      - ${{env.API_FOLDER}}/**
+      - LilyCmsApi/**
       
 jobs:
   build:
@@ -26,4 +26,4 @@ jobs:
         dotnet-version: 5.0.x
         
     - name: Build
-      run: dotnet build ${{env.API_FOLDER}}/LilyCmsApi.sln
+      run: dotnet build LilyCmsApi/LilyCmsApi.sln
