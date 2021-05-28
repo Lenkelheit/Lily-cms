@@ -6,7 +6,7 @@ env:
 on:
   push:
     paths:
-      - $API_FOLDER/**
+      - ${{ API_FOLDER }}/**
       
 jobs:
   build:
