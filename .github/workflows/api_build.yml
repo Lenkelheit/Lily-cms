@@ -1,7 +1,7 @@
 name: Test Build API Project
 
 env:
-  API_FOLDER: 'LilyCmsApi'
+  API_FOLDER: LilyCmsApi
   
 on:
   push:
