@@ -7,11 +7,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - ${{ API_FOLDER }}/**
+      - $API_FOLDER/**
   pull_request:
     branches: [ main ]
     paths:
-      - ${{ API_FOLDER }}/**
+      - $API_FOLDER/**
       
 jobs:
   build:
