@@ -6,7 +6,7 @@ env:
 on:
   push:
     paths:
-      - ${{ API_FOLDER }}/**
+      - LilyCmsApi/**
       
 jobs:
   build:
@@ -21,4 +21,4 @@ jobs:
         dotnet-version: 5.0.x
         
     - name: Build
-      run: dotnet build ${{ API_FOLDER }}/LilyCmsApi.sln
+      run: dotnet build LilyCmsApi/LilyCmsApi.sln
