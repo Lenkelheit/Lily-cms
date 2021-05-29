@@ -1,10 +1,10 @@
 name: Test Build API Project
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - LilyCmsApi/**
-  workflow_dispatch:
   
 env:
   BuildConfiguration: 'Release'
