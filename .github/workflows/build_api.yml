@@ -1,13 +1,13 @@
 name: Test Build API Project
 
-env:
-  API_FOLDER: 'LilyCmsApi'
-  
 on:
   push:
     paths:
       - LilyCmsApi/**
-      
+
+env:
+  BuildConfiguration: 'Release'
+
 jobs:
   build:
 
@@ -21,4 +21,4 @@ jobs:
         dotnet-version: 5.0.x
         
     - name: Build
-      run: dotnet build LilyCmsApi/LilyCmsApi.sln
+      run: dotnet build LilyCmsApi/LilyCmsApi.sln --configuration ${{ env.BuildConfiguration }}
