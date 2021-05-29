@@ -1,7 +1,6 @@
 name: Test Build API Project
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - LilyCmsApi/**
