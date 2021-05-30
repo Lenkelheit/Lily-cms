@@ -19,8 +19,10 @@ export class PageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.pages = this.activatedRoute.snapshot.data.pages || [];
-        this.pageDetails = this.activatedRoute.snapshot.data.pageDetails;
+        this.activatedRoute.data.subscribe(data => {
+            this.pages = data.pages || [];
+            this.pageDetails = data.pageDetails;
+        })
     }
 
     get ContentType() {
