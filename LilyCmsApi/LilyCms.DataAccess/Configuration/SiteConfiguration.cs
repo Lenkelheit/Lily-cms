@@ -16,7 +16,7 @@ namespace LilyCms.DataAccess.Configuration
             builder.ToTable(nameof(Site)).HasKey(e => e.Id);
             builder.Property(e => e.Title).IsRequired().HasMaxLength(256);
             builder.Property(e => e.Description).HasMaxLength(512);
-            builder.Property(e => e.UrlSlug).IsRequired().HasMaxLength(64);
+            builder.Property(e => e.UrlSlug).HasMaxLength(64);
 
             builder.HasMany(e => e.Pages).WithOne(e => e.Site).HasForeignKey(e => e.SiteId);
         }

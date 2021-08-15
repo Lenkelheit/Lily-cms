@@ -19,18 +19,6 @@
             <div *ngIf="formSubmitted && description.errors" class="invalid">Description is required.</div>
         </div>
 
-        <div class="form-group">
-            <mat-form-field appearance="outline" class="form-field"
-                [class.mat-form-field-invalid]="formSubmitted && urlSlug.errors">
-                <mat-label>Url</mat-label>
-                <input type="text" formControlName="urlSlug" matInput required />
-            </mat-form-field>
-            <div *ngIf="formSubmitted && urlSlug.errors && !urlSlug.errors?.notUniqueUrl" class="invalid">Lowercase Url
-                with no spaces is required.</div>
-            <div *ngIf="formSubmitted && urlSlug.errors?.notUniqueUrl" class="invalid">This url is already used.
-            </div>
-        </div>
-
         <mat-slide-toggle formControlName="enabled">Enabled</mat-slide-toggle>
     </form>
 </div>

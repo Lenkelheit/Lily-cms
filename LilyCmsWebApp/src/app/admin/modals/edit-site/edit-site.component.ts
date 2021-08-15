@@ -3,12 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Site } from 'src/app/shared/models/site/site';
 import { Helpers } from 'src/app/shared/utilities/helpers';
 import { tinyMCEEditorOptions } from 'src/app/shared/utilities/tiny-mce-editor-options';
 import { EditSite } from '../../models/edit-site';
-import { UrlOwner } from '../../models/enums/url-owner';
 import { SitesService } from '../../services/sites.service';
 import { UrlOperationsService } from '../../services/url-operations.service';
 
@@ -34,12 +32,10 @@ export class EditSiteComponent implements OnInit {
 
     ngOnInit(): void {
         this.createForm();
-        this.onChanges();
     }
 
     get title() { return this.form.get('title'); }
     get description() { return this.form.get('description'); }
-    get urlSlug() { return this.form.get('urlSlug'); }
 
     get tinyMCEEditorOptions() {
         return tinyMCEEditorOptions;
@@ -64,21 +60,10 @@ export class EditSiteComponent implements OnInit {
         }
     }
 
-    private onChanges() {
-        this.urlSlug.valueChanges.pipe(debounceTime(500), distinctUntilChanged()).subscribe((urlSlug: string) => {
-            this.validateUrlSlug();
-        });
-    }
-
-    private validateUrlSlug() {
-        this.urlOperationsService.validateUrlSlug(this.data.site.urlSlug, this.urlSlug, UrlOwner.Site);
-    }
-
     private createForm() {
         this.form = this.fb.group({
             title: [this.data.site.title, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
             description: [this.data.site.description, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
-            urlSlug: [this.data.site.urlSlug, [Validators.required, Validators.minLength(Helpers.TextMinLength), Validators.pattern(Helpers.UrlSlugValidator)]],
             enabled: [!!this.data.site.enabled],
         });
     }

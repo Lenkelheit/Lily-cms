@@ -4,6 +4,7 @@ using LilyCms.DataAccess.Interfaces;
 using LilyCms.DataAccess.Models;
 using LilyCms.DomainObjects.Sites;
 using Microsoft.EntityFrameworkCore;
+using SlugGenerator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace LilyCms.DataAccess.Daos
                 newSite.ModifiedAt = newSite.CreatedAt;
                 Context.Sites.Add(newSite);
                 await Context.SaveChangesAsync();
+                await SetUniqueSiteUrlSlug(newSite);
                 item = newSite;
             }
             return Mapper.Map<SiteDto>(item);
@@ -69,6 +71,15 @@ namespace LilyCms.DataAccess.Daos
             return !(await Context.Sites.AnyAsync(e => e.UrlSlug == siteUrl));
         }
 
-        
+        private async Task SetUniqueSiteUrlSlug(Site site)
+        {
+            var urlSlug = site.Title.GenerateSlug();
+            if (!await IsSiteUrlFreeAsync(urlSlug))
+            {
+                urlSlug += "-" + site.Id.ToString();
+            }
+            site.UrlSlug = urlSlug;
+            await Context.SaveChangesAsync();
+        }
     }
 }
