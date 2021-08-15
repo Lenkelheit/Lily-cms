@@ -14,6 +14,7 @@ export class UrlOperationsService {
         private pagesService: PagesService
     ) { }
 
+    // todo: remove sometime in future release
     validateUrlSlug(baseValue: string, urlControl: AbstractControl, urlOwner: UrlOwner, siteId?: string) {
         const urlSlugErrorsAmount = Helpers.getErrorsAmount(urlControl);
         if (urlSlugErrorsAmount === 0 || (urlSlugErrorsAmount === 1 && urlControl.hasError('notUniqueUrl'))) {

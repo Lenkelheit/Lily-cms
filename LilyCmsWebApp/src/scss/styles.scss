@@ -103,7 +103,8 @@ td.mat-footer-cell:last-of-type {
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 5px;
-
+  gap: 4rem;
+  
   &:not(:first-child) {
     padding-top: 10px;
   }
