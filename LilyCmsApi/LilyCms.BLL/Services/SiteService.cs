@@ -12,20 +12,23 @@ namespace LilyCms.BLL.Services
     public class SiteService : ISiteService
     {
         private readonly ISiteDao _siteDao;
+        private readonly IUserDao _userDao;
 
-        public SiteService(ISiteDao siteDao)
+        public SiteService(ISiteDao siteDao, IUserDao userDao)
         {
             _siteDao = siteDao;
+            _userDao = userDao;
         }
 
-        public async Task<IEnumerable<SiteDto>> GetSitesAsync()
+        public async Task<IEnumerable<SiteDto>> GetSitesAsync(string userEmail)
         {
-            return await _siteDao.GetSitesAsync();
+            return await _siteDao.GetSitesAsync(userEmail);
         }
 
-        public async Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto)
+        public async Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto, string userEmail)
         {
-            return await _siteDao.AddOrUpdateSiteAsync(siteDto);
+            var user = await _userDao.GetUserAsync(userEmail);
+            return await _siteDao.AddOrUpdateSiteAsync(siteDto, user.Id);
         }
 
         public async Task DeleteSiteAsync(Guid siteId)

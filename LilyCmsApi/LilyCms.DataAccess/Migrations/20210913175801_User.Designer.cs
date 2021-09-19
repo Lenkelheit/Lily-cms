@@ -4,14 +4,16 @@ using LilyCms.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LilyCms.DataAccess.Migrations
 {
     [DbContext(typeof(LilyCmsDbContext))]
-    partial class LilyCmsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210913175801_User")]
+    partial class User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

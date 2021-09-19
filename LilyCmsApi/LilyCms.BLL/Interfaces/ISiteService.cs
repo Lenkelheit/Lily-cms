@@ -9,8 +9,8 @@ namespace LilyCms.BLL.Interfaces
 {
     public interface ISiteService
     {
-        Task<IEnumerable<SiteDto>> GetSitesAsync();
-        Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto);
+        Task<IEnumerable<SiteDto>> GetSitesAsync(string userEmail);
+        Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto, string userEmail);
         Task DeleteSiteAsync(Guid siteId);
         Task<SiteDetailsDto> GetSiteDetailsAsync(string siteUrl, bool isUserView);
         Task<bool> IsSiteUrlFreeAsync(string siteUrl);

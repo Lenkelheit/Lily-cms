@@ -1,6 +1,8 @@
 using LilyCms.DataAccess.AutoMapperConfig;
 using LilyCms.DataAccess.Context;
+using LilyCms.DomainObjects.Auth;
 using LilyCmsApi.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,10 +12,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LilyCmsApi
@@ -36,7 +40,21 @@ namespace LilyCmsApi
 
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
             services.AddDbContext<LilyCmsDbContext>(options => options.UseSqlServer(dbConnection));
+
+            services.Configure<AuthGoogleConfig>(Configuration.GetSection("Authentication:Google"));
             services.AddCustomServices();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:Google:JwtSecretKey"]))
+                    };
+                });
 
             services.AddCors(options =>
             {
@@ -71,6 +89,7 @@ namespace LilyCmsApi
 
             app.UseCors();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

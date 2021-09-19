@@ -1,5 +1,6 @@
 ﻿using LilyCms.BLL.Interfaces;
 using LilyCms.DomainObjects.Sites;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,11 +14,11 @@ namespace LilyCmsApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SitesController : ControllerBase
+    public class SitesController : ApiControllerBase
     {
         private readonly ISiteService _siteService;
 
-        public SitesController(ISiteService siteService)
+        public SitesController(ISiteService siteService, ISecurityService securityService) : base(securityService)
         {
             _siteService = siteService;
         }
@@ -29,7 +30,8 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
-                var sites = await _siteService.GetSitesAsync();
+                var userEmail = GetUserEmail();
+                var sites = await _siteService.GetSitesAsync(userEmail);
 
                 return Ok(sites);
             }
@@ -46,7 +48,12 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
-                return Ok(await _siteService.AddOrUpdateSiteAsync(siteDto));
+                var userEmail = GetUserEmail();
+                if (siteDto.Id != default && !await _securityService.HasUserAccessToSite(siteDto.Id, userEmail))
+                {
+                    return Forbid();
+                }
+                return Ok(await _siteService.AddOrUpdateSiteAsync(siteDto, userEmail));
             }
             catch (Exception ex)
             {
@@ -62,6 +69,11 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToSite(siteId, userEmail))
+                {
+                    return Forbid();
+                }
                 await _siteService.DeleteSiteAsync(siteId);
                 return Ok();
             }
@@ -84,6 +96,12 @@ namespace LilyCmsApi.Controllers
                 {
                     return BadRequest("Url is not valid");
                 }
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToSite(siteUrl, userEmail))
+                {
+                    return Forbid();
+                }
+
                 var site = await _siteService.GetSiteDetailsAsync(siteUrl, isUserView: false);
 
                 if (site == null)
@@ -119,7 +137,5 @@ namespace LilyCmsApi.Controllers
                 return BadRequest(new { message = $"Error occurred attempting to check if site url {siteUrl} is free: {ex.InnerException?.Message ?? ex.Message}" });
             }
         }
-
-
     }
 }

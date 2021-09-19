@@ -2,6 +2,7 @@
 using LilyCms.BLL.Services;
 using LilyCms.DataAccess.Daos;
 using LilyCms.DataAccess.Interfaces;
+using LilyCms.DomainObjects.Auth;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace LilyCmsApi.Extensions
             services.AddScoped<ISiteService, SiteService>();
             services.AddScoped<IPageDao, PageDao>();
             services.AddScoped<IPageService, PageService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserDao, UserDao>();
+            services.AddScoped<ISecurityService, SecurityService>();
         }
     }
 }
