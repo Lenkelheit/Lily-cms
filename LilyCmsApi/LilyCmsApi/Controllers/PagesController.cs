@@ -15,11 +15,11 @@ namespace LilyCmsApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PagesController : ControllerBase
+    public class PagesController : ApiControllerBase
     {
         private readonly IPageService _pageService;
 
-        public PagesController(IPageService pageService)
+        public PagesController(IPageService pageService, ISecurityService securityService) : base(securityService)
         {
             _pageService = pageService;
         }
@@ -31,6 +31,11 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToSite(pageDto.SiteId, userEmail))
+                {
+                    return Forbid();
+                }
                 return Ok(await _pageService.AddOrUpdatePageAsync(pageDto));
             }
             catch (Exception ex)
@@ -47,6 +52,11 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToPage(pageId, userEmail))
+                {
+                    return Forbid();
+                }
                 await _pageService.DeletePageAsync(pageId);
                 return Ok();
             }
@@ -86,6 +96,12 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToSite(siteUrl, userEmail))
+                {
+                    return Forbid();
+                }
+
                 var page = await _pageService.GetPageDetailsAsync(siteUrl, pageUrl, isUserView: false);
 
                 if (page == null)
@@ -109,6 +125,11 @@ namespace LilyCmsApi.Controllers
         {
             try
             {
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToSite(pageDetailsDto.SiteId, userEmail))
+                {
+                    return Forbid();
+                }
                 return Ok(await _pageService.SavePageContentAsync(pageDetailsDto));
             }
             catch (Exception ex)

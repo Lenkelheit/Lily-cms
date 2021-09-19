@@ -16,7 +16,9 @@ namespace LilyCms.DataAccess.Models
         public bool Enabled { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset? ModifiedAt { get; set; }
+        public Guid UserId { get; set; }
 
+        public User User { get; set; }
         public ICollection<Page> Pages { get; set; } = new List<Page>();
     }
 }

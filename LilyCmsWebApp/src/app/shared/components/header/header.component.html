@@ -1,5 +1,14 @@
 <mat-toolbar color="primary">
-    <a mat-button class="logo" routerLink="">Lily CMS</a>
-    <a mat-button routerLink="admin/sites">Admin</a>
+    <a mat-button class="logo" routerLink="/admin">Lily CMS</a>
+    <a *ngIf="user" mat-button routerLink="/admin/sites">Admin</a>
     <a mat-button routerLink="user">User</a>
+    <button *ngIf="!user" (click)="login()" mat-raised-button class="ml-auto">
+        Login
+    </button>
+    <span *ngIf="user" class="ml-auto">
+        <span>{{user.name}}</span>
+        <button (click)="signOut()" mat-raised-button class="ml-3">
+            Logout
+        </button>
+    </span>
 </mat-toolbar>

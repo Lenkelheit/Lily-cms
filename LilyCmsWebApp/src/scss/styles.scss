@@ -31,6 +31,10 @@ table {
   max-width: 1400px;
 }
 
+.google-logo {
+  width: 20px;
+}
+
 .form-field {
   width: 100%;
 }
@@ -104,7 +108,7 @@ td.mat-footer-cell:last-of-type {
   justify-content: space-between;
   padding-bottom: 5px;
   gap: 4rem;
-  
+
   &:not(:first-child) {
     padding-top: 10px;
   }

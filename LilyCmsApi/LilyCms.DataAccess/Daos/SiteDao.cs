@@ -19,13 +19,13 @@ namespace LilyCms.DataAccess.Daos
         {
         }
 
-        public async Task<IEnumerable<SiteDto>> GetSitesAsync()
+        public async Task<IEnumerable<SiteDto>> GetSitesAsync(string userEmail)
         {
-            var items = await Context.Sites.ToListAsync();
+            var items = await Context.Sites.Where(x => x.User.Email == userEmail).ToListAsync();
             return Mapper.Map<List<SiteDto>>(items);
         }
 
-        public async Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto)
+        public async Task<SiteDto> AddOrUpdateSiteAsync(SiteDto siteDto, Guid userId)
         {
             var item = await Context.Sites.FirstOrDefaultAsync(t => t.Id == siteDto.Id);
             if (item != null)
@@ -37,6 +37,7 @@ namespace LilyCms.DataAccess.Daos
             else
             {
                 var newSite = Mapper.Map<Site>(siteDto);
+                newSite.UserId = userId;
                 newSite.CreatedAt = DateTimeOffset.Now;
                 newSite.ModifiedAt = newSite.CreatedAt;
                 Context.Sites.Add(newSite);
@@ -69,6 +70,21 @@ namespace LilyCms.DataAccess.Daos
         public async Task<bool> IsSiteUrlFreeAsync(string siteUrl)
         {
             return !(await Context.Sites.AnyAsync(e => e.UrlSlug == siteUrl));
+        }
+
+        public async Task<bool> HasUserAccessToSite(Guid siteId, string userEmail)
+        {
+            return await Context.Sites.AnyAsync(e => e.Id == siteId && e.User.Email == userEmail);
+        }
+
+        public async Task<bool> HasUserAccessToSite(string siteUrl, string userEmail)
+        {
+            return await Context.Sites.AnyAsync(e => e.UrlSlug == siteUrl && e.User.Email == userEmail);
+        }
+
+        public async Task<bool> HasUserAccessToPage(Guid pageId, string userEmail)
+        {
+            return await Context.Pages.AnyAsync(e => e.Id == pageId && e.Site.User.Email == userEmail);
         }
 
         private async Task SetUniqueSiteUrlSlug(Site site)

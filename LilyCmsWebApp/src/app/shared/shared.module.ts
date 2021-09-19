@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 
 const modules = [
     MatButtonModule,
@@ -36,7 +37,8 @@ const modules = [
         HeaderComponent,
         SafeHtmlPipe,
         ConfirmComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        LoginComponent
     ],
     imports: [
         CommonModule,
