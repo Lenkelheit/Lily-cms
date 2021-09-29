@@ -22,6 +22,7 @@ namespace LilyCmsApi.Extensions
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserDao, UserDao>();
             services.AddScoped<ISecurityService, SecurityService>();
+            services.AddScoped<IFeedbackService, FeedbackService>();
         }
     }
 }

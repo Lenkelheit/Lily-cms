@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LilyCms.DomainObjects.PageAreas
+namespace LilyCms.DomainObjects.RelatedPageInfo
 {
     public class PageAreaDto : BaseEntity.BaseEntity
     {

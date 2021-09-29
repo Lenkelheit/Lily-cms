@@ -20,5 +20,6 @@ namespace LilyCms.DataAccess.Models
 
         public Site Site { get; set; }
         public ICollection<PageArea> PageAreas { get; set; } = new List<PageArea>();
+        public ICollection<PageFeedback> PageFeedbacks { get; set; } = new List<PageFeedback>();
     }
 }

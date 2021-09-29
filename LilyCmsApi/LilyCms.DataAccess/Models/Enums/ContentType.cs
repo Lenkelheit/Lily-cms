@@ -11,6 +11,10 @@ namespace LilyCms.DataAccess.Models.Enums
         /// <summary>
         /// Displays HTML content
         /// </summary>
-        HtmlContent = 1
+        HtmlContent = 1,
+        /// <summary>
+        /// Displays feedback content
+        /// </summary>
+        Feedback = 2
     }
 }

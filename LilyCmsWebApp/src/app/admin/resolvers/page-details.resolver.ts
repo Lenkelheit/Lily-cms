@@ -5,6 +5,7 @@ import {
     ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { PageDetails } from 'src/app/shared/models/page/page-details';
 import { PagesService } from '../services/pages.service';
 
@@ -17,6 +18,8 @@ export class PageDetailsResolver implements Resolve<PageDetails> {
         const siteUrl = route.params.siteUrl;
         const pageUrl = route.params.pageUrl;
 
-        return this.pagesService.getPageDetails(siteUrl, pageUrl);
+        return this.pagesService.getPageDetails(siteUrl, pageUrl).pipe(tap((page: PageDetails) => {
+            this.pagesService.page = page;
+        }));
     }
 }

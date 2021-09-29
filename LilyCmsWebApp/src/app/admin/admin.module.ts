@@ -15,10 +15,12 @@ import { SiteDetailsResolver } from './resolvers/site-details.resolver';
 import { EditPageComponent } from './modals/edit-page/edit-page.component';
 import { EntityOperationsService } from './services/entity-operations.service';
 import { UrlOperationsService } from './services/url-operations.service';
-import { PageDetailsComponent } from './components/page-details/page-details.component';
+import { PageDetailsComponent } from './components/page/page-details/page-details.component';
 import { PageDetailsResolver } from './resolvers/page-details.resolver';
-import { PageContentComponent } from './components/page-content/page-content.component';
+import { PageContentComponent } from './components/page/page-content/page-content.component';
 import { EditPageAreaComponent } from './modals/edit-page-area/edit-page-area.component';
+import { PageFeedbacksResolver } from './resolvers/page-feedbacks.resolver';
+import { PageFeedbacksComponent } from './components/page/page-feedbacks/page-feedbacks.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { EditPageAreaComponent } from './modals/edit-page-area/edit-page-area.co
         EditPageComponent,
         PageDetailsComponent,
         PageContentComponent,
-        EditPageAreaComponent
+        EditPageAreaComponent,
+        PageFeedbacksComponent
     ],
     imports: [
         CommonModule,
@@ -45,7 +48,8 @@ import { EditPageAreaComponent } from './modals/edit-page-area/edit-page-area.co
         EntityOperationsService,
         UrlOperationsService,
         PagesService,
-        PageDetailsResolver
+        PageDetailsResolver,
+        PageFeedbacksResolver
     ],
     entryComponents: [
         EditSiteComponent,

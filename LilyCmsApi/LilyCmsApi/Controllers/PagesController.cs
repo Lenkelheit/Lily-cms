@@ -1,5 +1,6 @@
 ﻿using LilyCms.BLL.Interfaces;
 using LilyCms.DomainObjects.Pages;
+using LilyCms.DomainObjects.RelatedPageInfo;
 using LilyCms.DomainObjects.Sites;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,10 +19,12 @@ namespace LilyCmsApi.Controllers
     public class PagesController : ApiControllerBase
     {
         private readonly IPageService _pageService;
+        private readonly IFeedbackService _feedbackService;
 
-        public PagesController(IPageService pageService, ISecurityService securityService) : base(securityService)
+        public PagesController(IPageService pageService, ISecurityService securityService, IFeedbackService feedbackService) : base(securityService)
         {
             _pageService = pageService;
+            _feedbackService = feedbackService;
         }
 
         [HttpPost]
@@ -137,5 +140,29 @@ namespace LilyCmsApi.Controllers
                 return BadRequest(new { message = $"Error occurred attempting to save page content: {ex.InnerException?.Message ?? ex.Message}" });
             }
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("{pageId}/feedbacks")]
+        public async Task<ActionResult<IEnumerable<PageFeedbackDto>>> GetPageFeedbacks(Guid pageId)
+        {
+            try
+            {
+                var userEmail = GetUserEmail();
+                if (!await _securityService.HasUserAccessToPage(pageId, userEmail))
+                {
+                    return Forbid();
+                }
+                var pageFeedbacks = await _feedbackService.GetPageFeedbacksAsync(pageId);
+                return Ok(pageFeedbacks);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Error occurred attempting to retrieve page feedbacks: {ex.InnerException?.Message ?? ex.Message}" });
+            }
+        }
+
+
     }
 }

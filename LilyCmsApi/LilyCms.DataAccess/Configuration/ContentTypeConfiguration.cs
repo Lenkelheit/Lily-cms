@@ -24,6 +24,12 @@ namespace LilyCms.DataAccess.Configuration
                     Id = Models.Enums.ContentType.HtmlContent,
                     Name = "Html Content",
                     Description = "Displays HTML content"
+                },
+                new ContentType
+                {
+                    Id = Models.Enums.ContentType.Feedback,
+                    Name = "Feedback Content",
+                    Description = "Displays Feedback content"
                 });
         }
     }

@@ -11,13 +11,16 @@ import { PagesResolver } from './resolvers/pages.resolver';
 import { UserPagesService } from './services/user-pages.service';
 import { PageComponent } from './components/page/page.component';
 import { UserPageResolver } from './resolvers/user-page.resolver';
+import { FeedbacksService } from './services/feedbacks.service';
+import { AddFeedbackComponent } from './components/modals/add-feedback/add-feedback.component';
 
 
 @NgModule({
     declarations: [
         CoreComponent,
         SiteComponent,
-        PageComponent
+        PageComponent,
+        AddFeedbackComponent,
     ],
     imports: [
         CommonModule,
@@ -29,7 +32,11 @@ import { UserPageResolver } from './resolvers/user-page.resolver';
         UserSiteResolver,
         PagesResolver,
         UserPagesService,
-        UserPageResolver
+        UserPageResolver,
+        FeedbacksService,
+    ],
+    entryComponents: [
+        AddFeedbackComponent
     ]
 })
 export class CoreModule { }

@@ -15,16 +15,32 @@
             </div>
 
             <div class="content-block">
-                <div *ngFor="let pageArea of pageDetails.pageAreas" class="details-block mat-elevation-z8 p-4 mb-5">
-                    <h3 class="page-area-header">{{pageArea.title}}</h3>
-                    <div class=paragraph-note>
-                        <p>Paragraph note:</p>
-                        <span [innerHTML]="pageArea.description | safeHtml"></span>
-                    </div>
+                <div *ngFor="let pageArea of pageDetails.pageAreas" class="p-4 mb-5"
+                    [ngClass]="pageArea.contentType !== ContentType.Feedback ? 'details-block mat-elevation-z8' : ''">
 
                     <div [ngSwitch]="pageArea.contentType">
                         <div *ngSwitchCase="ContentType.HtmlContent">
+                            <h3 class="page-area-header">{{pageArea.title}}</h3>
+                            <div class=paragraph-note>
+                                <p>Paragraph note:</p>
+                                <span [innerHTML]="pageArea.description | safeHtml"></span>
+                            </div>
+
                             <div [innerHTML]="pageArea.content | safeHtml"></div>
+                        </div>
+
+                        <div *ngSwitchCase="ContentType.Feedback">
+                            <div class="text-center">
+                                <h2>{{pageArea.title}}</h2>
+                                <button mat-stroked-button [color]="pageFeedback?.vote ? 'accent' : 'basic'"
+                                    (click)="onPageVote(true)">
+                                    <mat-icon class="mr-2">thumb_up</mat-icon> Yes
+                                </button>
+                                <button mat-stroked-button class="ml-3" [color]="pageFeedback?.vote === false  ? 'accent' : 'basic'"
+                                    (click)="onPageVote(false)">
+                                    <mat-icon class="mr-2">thumb_down</mat-icon> No
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

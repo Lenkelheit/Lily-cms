@@ -5,10 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 import { filter } from 'rxjs/operators';
 import { PageDetails } from 'src/app/shared/models/page/page-details';
 import { Page } from 'src/app/shared/models/page/page';
-import { EditPageComponent } from '../../modals/edit-page/edit-page.component';
-import { EditPage } from '../../models/edit-page';
-import { EntityOperationsService } from '../../services/entity-operations.service';
-import { EntityType } from '../../models/enums/entity-type';
+import { EditPageComponent } from '../../../modals/edit-page/edit-page.component';
+import { EditPage } from '../../../models/edit-page';
+import { EntityOperationsService } from '../../../services/entity-operations.service';
+import { EntityType } from '../../../models/enums/entity-type';
 
 @Component({
     selector: 'app-page-details',

@@ -18,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { MatCardModule } from '@angular/material/card';
 
 const modules = [
     MatButtonModule,
@@ -29,7 +30,8 @@ const modules = [
     MatSlideToggleModule,
     EditorModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
 ];
 
 @NgModule({
