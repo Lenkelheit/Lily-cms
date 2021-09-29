@@ -3,6 +3,7 @@ using LilyCms.DataAccess.Context;
 using LilyCms.DataAccess.Interfaces;
 using LilyCms.DataAccess.Models;
 using LilyCms.DomainObjects.Pages;
+using LilyCms.DomainObjects.RelatedPageInfo;
 using Microsoft.EntityFrameworkCore;
 using SlugGenerator;
 using System;
@@ -94,6 +95,49 @@ namespace LilyCms.DataAccess.Daos
             }
             page.UrlSlug = urlSlug;
             await Context.SaveChangesAsync();
+        }
+
+        public async Task<PageDto> GetPageByFeedbackIdAsync(Guid pageFeedbackId)
+        {
+            var item = await Context.PageFeedbacks.Include(e => e.Page).Where(e => e.Id == pageFeedbackId).Select(e => e.Page).FirstOrDefaultAsync();
+            return Mapper.Map<PageDto>(item);
+        }
+
+        public async Task<IEnumerable<PageFeedbackDto>> GetPageFeedbacksAsync(Guid pageId)
+        {
+            var items = await Context.PageFeedbacks.Where(e => e.PageId == pageId).ToListAsync();
+            return Mapper.Map<List<PageFeedbackDto>>(items);
+        }
+
+        public async Task<PageFeedbackDto> AddOrUpdatePageFeedbackAsync(PageFeedbackDto pageFeedbackDto)
+        {
+            var item = await Context.PageFeedbacks.FirstOrDefaultAsync(t => t.Id == pageFeedbackDto.Id);
+            if (item != null)
+            {
+                pageFeedbackDto.ModifiedAt = DateTimeOffset.Now;
+                Mapper.Map(pageFeedbackDto, item);
+                await Context.SaveChangesAsync();
+            }
+            else
+            {
+                var newItem = Mapper.Map<PageFeedback>(pageFeedbackDto);
+                newItem.CreatedAt = DateTimeOffset.Now;
+                newItem.ModifiedAt = newItem.CreatedAt;
+                Context.PageFeedbacks.Add(newItem);
+                await Context.SaveChangesAsync();
+                item = newItem;
+            }
+            return Mapper.Map<PageFeedbackDto>(item);
+        }
+
+        public async Task DeletePageFeedbackAsync(Guid pageFeedbackId)
+        {
+            var item = await Context.PageFeedbacks.FirstOrDefaultAsync(t => t.Id == pageFeedbackId);
+            if (item != null)
+            {
+                Context.PageFeedbacks.Remove(item);
+                await Context.SaveChangesAsync();
+            }
         }
     }
 }

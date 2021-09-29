@@ -17,6 +17,7 @@ namespace LilyCms.DataAccess.Context
         public DbSet<PageArea> PageAreas { get; set; }
         public DbSet<ContentType> ContentTypes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<PageFeedback> PageFeedbacks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

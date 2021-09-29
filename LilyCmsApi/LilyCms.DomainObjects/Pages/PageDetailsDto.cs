@@ -1,5 +1,5 @@
 ﻿using LilyCms.DomainObjects.BaseEntity;
-using LilyCms.DomainObjects.PageAreas;
+using LilyCms.DomainObjects.RelatedPageInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -39,6 +39,12 @@ namespace LilyCms.BLL.Services
             return await _pageDao.IsPageUrlFreeAsync(pageUrl, siteId);
         }
 
+        // todo: maybe need to remove it
+        public async Task<PageDto> GetPageByFeedbackIdAsync(Guid pageFeedbackId)
+        {
+            return await _pageDao.GetPageByFeedbackIdAsync(pageFeedbackId);
+        }
+
         public async Task<PageDetailsDto> GetPageDetailsAsync(string siteUrl, string pageUrl, bool isUserView)
         {
             return await _pageDao.GetPageDetailsAsync(siteUrl, pageUrl, isUserView);

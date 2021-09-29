@@ -5,7 +5,7 @@
                 <mat-icon>arrow_back</mat-icon> Return back to pages
             </a>
 
-            <div class="details-block mat-elevation-z8 p-4 mt-4">
+            <div class="details-block mat-elevation-z8 p-4 my-4">
                 <h1>Page details</h1>
                 <div class="group">
                     <h4>Title</h4>
@@ -39,10 +39,19 @@
                     </button>
                 </div>
             </div>
+
+            <a mat-raised-button [routerLink]="['/admin/sites', siteUrl, page.urlSlug]" class="mb-4 d-block">
+                Go to page
+            </a>
+
+            <a mat-raised-button [routerLink]="['/admin/sites', siteUrl, page.urlSlug, 'feedbacks']" class="d-block">
+                See page feedbacks
+            </a>
+
         </div>
 
         <div class="col-8">
-            <app-page-content [page]="page"></app-page-content>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

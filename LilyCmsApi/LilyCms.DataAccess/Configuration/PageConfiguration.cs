@@ -19,6 +19,7 @@ namespace LilyCms.DataAccess.Configuration
             builder.Property(e => e.UrlSlug).HasMaxLength(64);
 
             builder.HasMany(e => e.PageAreas).WithOne(e => e.Page).HasForeignKey(e => e.PageId);
+            builder.HasMany(e => e.PageFeedbacks).WithOne(e => e.Page).HasForeignKey(e => e.PageId);
         }
     }
 }

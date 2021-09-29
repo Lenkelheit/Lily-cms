@@ -5,6 +5,8 @@
         <!-- todo: add preview -->
         <!-- <button (click)="onPreview()">Preview</button>-->
         <button mat-raised-button color="primary" class="btn-save ml-3" (click)="savePageContent()">Save</button>
+        <button *ngIf="!isFeedbackAreaPresent && page.pageAreas.length" mat-stroked-button color="primary" class="ml-3"
+            (click)="onAddFeedbackArea()">Add Feedback Area</button>
     </div>
 
     <div formArrayName="pageAreas">
@@ -16,7 +18,7 @@
 
         <div *ngFor="let pageArea of page.pageAreas; let i = index">
             <div [formGroupName]="i" [ngClass]="{'hidden-area': !pageAreas.value[i].enabled}"
-                class="details-block mat-elevation-z8 p-3 mb-4">
+                class="details-block mat-elevation-z8 p-3 mb-4" [class.feedback-area]="pageArea.contentType === ContentType.Feedback">
 
                 <div class="d-flex align-items-center mb-3">
                     <h3 class="mb-0 page-area-header">{{pageArea.title}}</h3>
@@ -52,10 +54,14 @@
                             </editor>
                         </div>
                     </div>
+
+                    <div *ngSwitchCase="ContentType.Feedback">
+                        <p class="info">Feedback Area</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-center mb-5">
+            <div class="text-center mb-5" *ngIf="pageArea.contentType !== ContentType.Feedback">
                 <button mat-raised-button color="primary" (click)="editPagetArea(i, true)">Add Page Area</button>
             </div>
         </div>

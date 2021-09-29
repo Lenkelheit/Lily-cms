@@ -11,7 +11,7 @@
             <div *ngIf="formSubmitted && title.errors" class="invalid">Title is required.</div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" *ngIf="contentType.value !== ContentType.Feedback">
             <label for="description" class="required">Description</label>
             <editor formControlName="description" [init]="tinyMCEEditorOptions"
                 [class.is-invalid]="formSubmitted && description.errors">

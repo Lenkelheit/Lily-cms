@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LilyCms.DataAccess.Models;
-using LilyCms.DomainObjects.PageAreas;
+using LilyCms.DomainObjects.RelatedPageInfo;
 using LilyCms.DomainObjects.Pages;
 using LilyCms.DomainObjects.Sites;
 using LilyCms.DomainObjects.Users;
@@ -25,6 +25,7 @@ namespace LilyCms.DataAccess.AutoMapperConfig
             CreateMap<PageDetailsDto, Page>().ReverseMap();
 
             CreateMap<PageAreaDto, PageArea>().ReverseMap();
+            CreateMap<PageFeedbackDto, PageFeedback>().ReverseMap();
         }
     }
 }

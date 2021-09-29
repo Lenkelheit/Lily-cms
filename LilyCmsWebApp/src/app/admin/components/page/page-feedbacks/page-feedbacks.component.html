@@ -1,0 +1,22 @@
+<div class="feedback-results text-center">
+    <span class="mr-3">
+        <mat-icon class="good-feedback">thumb_up</mat-icon> {{goodFeedbacksCount}}
+    </span>
+    <span>
+        <mat-icon class="bad-feedback">thumb_down</mat-icon> {{pageFeedbacks.length - goodFeedbacksCount}}
+    </span>
+</div>
+
+<mat-card *ngFor="let feedback of pageFeedbacks" class="my-4">
+    <mat-card-header>
+        <mat-card-title>
+            <mat-icon [ngClass]="feedback.vote ? 'good-feedback' : 'bad-feedback'">{{feedback.vote ? 'thumb_up' :
+                'thumb_down'}}</mat-icon>
+        </mat-card-title>
+        <mat-card-subtitle>{{feedback.userEmail ? feedback.userEmail : 'Anonymous user'}} at {{feedback.createdAt
+            | date: 'MMMM d, y, h:mm a' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="feedback.comment">
+        <p class="ml-3">{{feedback.comment}}</p>
+    </mat-card-content>
+</mat-card>

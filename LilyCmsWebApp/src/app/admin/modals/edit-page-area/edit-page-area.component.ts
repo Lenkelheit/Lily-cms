@@ -61,6 +61,9 @@ export class EditPageAreaComponent implements OnInit {
 
     private initEnumKeys() {
         this.contentTypeKeys = EnumUtil.getEnumKeys(ContentType);
+        if (this.data.pageArea.contentType !== ContentType.Feedback) {
+            this.contentTypeKeys = this.contentTypeKeys.filter(e => ContentType[e] !== ContentType.Feedback);
+        }
     }
 
     private createForm() {
@@ -70,5 +73,16 @@ export class EditPageAreaComponent implements OnInit {
             description: [this.data.pageArea.description, [Validators.required, Validators.minLength(Helpers.TextMinLength)]],
             enabled: [!!this.data.pageArea.enabled],
         });
+
+        this.preselectDataOnFeedback();
+    }
+
+    private preselectDataOnFeedback() {
+        if (this.data.pageArea.contentType === ContentType.Feedback) {
+            this.title.setValue('Was this page helpful?');
+            this.enabled.setValue(true);
+            this.contentType.disable();
+            this.description.setValidators([Validators.minLength(Helpers.TextMinLength)]);
+        }
     }
 }
