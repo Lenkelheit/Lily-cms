@@ -13,6 +13,11 @@ on:
     - main
     paths:
     - ${{ env.WebAppFolderPath }}/**
+  pull_request:
+    branches:
+    - main
+    paths:
+    - ${{ env.WebAppFolderPath }}/**
 
 jobs:
   build-deploy:
