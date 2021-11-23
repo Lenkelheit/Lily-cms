@@ -9,5 +9,5 @@ namespace LilyCms.DataAccess.Migrations
     class test 
     sdfsfdsfsd
     {
-    }
+    }fdsfsdfs
 }

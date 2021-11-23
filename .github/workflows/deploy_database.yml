@@ -14,13 +14,7 @@ on:
     - main
     - develop
     paths:
-    - '${{ env.MigrationsFolderPath }}/**'
-  pull_request:
-    branches:
-    - main
-    - develop
-    paths:
-    - '${{ env.MigrationsFolderPath }}/**'
+    - LilyCmsApi/LilyCms.DataAccess/Migrations/**
 
 jobs:
   update-database:

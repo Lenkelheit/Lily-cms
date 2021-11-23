@@ -13,13 +13,7 @@ on:
     - main
     - develop
     paths:
-    - '${{ env.WebAppFolderPath }}/**'
-  pull_request:
-    branches:
-    - main
-    - develop
-    paths:
-    - '${{ env.WebAppFolderPath }}/**'
+    - LilyCmsWebApp/**
 
 jobs:
   build-deploy:
