@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace LilyCms.DataAccess.Migrations
 {
-    class test
+    class test 
+    sdfsfdsfsd
     {
     }
 }
