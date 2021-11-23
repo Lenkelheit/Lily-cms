@@ -15,12 +15,6 @@ on:
     - develop
     paths:
     - LilyCmsApi/LilyCms.DataAccess/Migrations/**
-  pull_request:
-    branches:
-    - main
-    - develop
-    paths:
-    - LilyCmsApi/LilyCms.DataAccess/Migrations/**
 
 jobs:
   update-database:

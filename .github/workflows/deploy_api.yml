@@ -15,12 +15,6 @@ on:
     - develop
     paths:
     - LilyCmsApi/**
-  pull_request:
-    branches:
-    - main
-    - develop
-    paths:
-    - LilyCmsApi/**
 
 jobs:
   build-deploy:
