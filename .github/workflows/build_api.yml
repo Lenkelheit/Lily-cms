@@ -1,13 +1,13 @@
 name: Test Build API Project
 
 env:
-  BuildConfiguration: "Release"
+  BuildConfiguration: Release
   ApiFolderPath: LilyCmsApi
 
 on:
   push:
     paths:
-      - ${{ env.ApiFolderPath }}/**
+      - LilyCmsApi/**
 
 jobs:
   build:

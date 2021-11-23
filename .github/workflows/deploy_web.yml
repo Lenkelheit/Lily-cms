@@ -12,12 +12,12 @@ on:
     branches:
     - main
     paths:
-    - ${{ env.WebAppFolderPath }}/**
+    - LilyCmsWebApp/**
   pull_request:
     branches:
     - main
     paths:
-    - ${{ env.WebAppFolderPath }}/**
+    - LilyCmsWebApp/**
 
 jobs:
   build-deploy:
