@@ -1,0 +1,39 @@
+name: Apply Migrations to Database
+
+env:
+  BuildConfiguration: Release
+  NetCoreVersion: 5.0.x
+  DataAccessFolderPath: LilyCmsApi/LilyCms.DataAccess
+  MigrationsFolderPath: LilyCmsApi/LilyCms.DataAccess/Migrations
+  DbContext: Context/LilyCmsDbContext
+
+on:
+  workflow_dispatch:
+  push:
+   branches:
+      - main
+    paths:
+      - ${{ env.MigrationsFolderPath }}/**
+
+jobs:
+  update-database:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.DataAccessFolderPath }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.NetCoreVersion }}
+
+      - name: Install EF Tool
+        run: |
+          dotnet tool install dotnet-ef
+          dotnet tool restore
+
+      - name: Update database
+        run: dotnet ef database update --configuration ${{ env.BuildConfiguration }} --context ${{ env.DbContext }} --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
