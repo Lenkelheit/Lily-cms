@@ -44,7 +44,7 @@ namespace LilyCmsApi
             services.Configure<AuthGoogleConfig>(Configuration.GetSection("Authentication:Google"));
             services.AddCustomServices();
             // Test 3
-            var a = 10;
+            var a = 11;
             Console.WriteLine(a);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
