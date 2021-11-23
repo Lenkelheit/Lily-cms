@@ -4,7 +4,8 @@ env:
   BuildConfiguration: Release
   NetCoreVersion: 5.0.x
   DataAccessFolderPath: LilyCmsApi/LilyCms.DataAccess
-  DbContext: Context/LilyCmsDbContext
+  DbContext: LilyCmsDbContext
+  StartupProject: ../LilyCmsApi
 
 on:
   workflow_dispatch:
@@ -35,4 +36,6 @@ jobs:
           dotnet tool restore
 
       - name: Update database
-        run: dotnet ef database update --configuration ${{ env.BuildConfiguration }} --context ${{ env.DbContext }} --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        run:
+          dotnet ef database update --configuration ${{ env.BuildConfiguration }} --context ${{ env.DbContext }} --startup-project ${{ env.StartupProject }}
+          --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
