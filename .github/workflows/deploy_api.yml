@@ -14,13 +14,13 @@ on:
     - main
     - develop
     paths:
-    - '${{ env.ApiFolderPath }}/**'
+    - LilyCmsApi/**
   pull_request:
     branches:
     - main
     - develop
     paths:
-    - '${{ env.ApiFolderPath }}/**'
+    - LilyCmsApi/**
 
 jobs:
   build-deploy:
