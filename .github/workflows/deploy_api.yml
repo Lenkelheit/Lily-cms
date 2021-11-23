@@ -13,12 +13,12 @@ on:
     branches:
     - main
     paths:
-    - ${{ env.ApiFolderPath }}/**
+    - LilyCmsApi/**
   pull_request:
     branches:
     - main
     paths:
-    - ${{ env.ApiFolderPath }}/**
+    - LilyCmsApi/**
 
 jobs:
   build-deploy:
