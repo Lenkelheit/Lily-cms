@@ -15,6 +15,12 @@ on:
     - develop
     paths:
     - ${{ env.MigrationsFolderPath }}/**
+  pull_request:
+    branches:
+    - main
+    - develop
+    paths:
+    - ${{ env.MigrationsFolderPath }}/**
 
 jobs:
   update-database:
