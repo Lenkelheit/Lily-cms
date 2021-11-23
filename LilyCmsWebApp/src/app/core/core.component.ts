@@ -10,6 +10,6 @@ export class CoreComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+      console.log('test');
   }
-
 }
