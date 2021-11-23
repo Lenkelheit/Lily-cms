@@ -13,11 +13,6 @@ on:
     - main
     paths:
     - LilyCmsApi/LilyCms.DataAccess/Migrations/**
-  pull_request:
-    branches:
-    - main
-    paths:
-    - LilyCmsApi/LilyCms.DataAccess/Migrations/**
 
 jobs:
   update-database:
