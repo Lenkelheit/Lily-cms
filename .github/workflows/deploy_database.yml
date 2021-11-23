@@ -31,7 +31,7 @@ jobs:
 
       - name: Install EF Tool
         run: |
-          dotnet tool install dotnet-ef
+          dotnet tool install --global dotnet-ef
           dotnet tool restore
 
       - name: Update database
