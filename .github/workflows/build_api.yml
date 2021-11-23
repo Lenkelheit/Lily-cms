@@ -6,8 +6,8 @@ env:
 
 on:
   push:
-    paths:
-      - '${{ env.ApiFolderPath }}/**'
+    # paths:
+    #   - '${{ env.ApiFolderPath }}/**'
 
 jobs:
   build:
