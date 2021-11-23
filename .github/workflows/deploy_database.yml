@@ -14,13 +14,13 @@ on:
     - main
     - develop
     paths:
-    - ${{ env.MigrationsFolderPath }}/**
+    - '${{ env.MigrationsFolderPath }}/**'
   pull_request:
     branches:
     - main
     - develop
     paths:
-    - ${{ env.MigrationsFolderPath }}/**
+    - '${{ env.MigrationsFolderPath }}/**'
 
 jobs:
   update-database:

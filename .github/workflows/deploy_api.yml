@@ -14,13 +14,13 @@ on:
     - main
     - develop
     paths:
-    - ${{ env.ApiFolderPath }}/**
+    - '${{ env.ApiFolderPath }}/**'
   pull_request:
     branches:
     - main
     - develop
     paths:
-    - ${{ env.ApiFolderPath }}/**
+    - '${{ env.ApiFolderPath }}/**'
 
 jobs:
   build-deploy:
