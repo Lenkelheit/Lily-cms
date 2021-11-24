@@ -86,8 +86,6 @@ namespace LilyCmsApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LilyCmsApi v1"));
             }
 
-            app.UseDeveloperExceptionPage();
-
             //app.UseHttpsRedirection();
 
             app.UseRouting();
