@@ -1,8 +1,8 @@
 name: Test Build API Project
 
 env:
-  BuildConfiguration: "Release"
-  ApiFolderPath: "LilyCmsApi"
+  BuildConfiguration: Release
+  ApiFolderPath: LilyCmsApi
 
 on:
   push:

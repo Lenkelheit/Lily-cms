@@ -4,7 +4,7 @@ env:
   BuildConfiguration: Release
   NetCoreVersion: 5.0.x
   ApiFolderPath: LilyCmsApi
-  AzureWebAppPackagePath: "./published-api"
+  AzureWebAppPackagePath: published-api
   AzureWebAppName: lily-cms-api
 
 on:
@@ -45,5 +45,5 @@ jobs:
         with:
           app-name: ${{ env.AzureWebAppName }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_API }}
-          package: ${{ env.AzureWebAppPackagePath }}
+          package: ${{ env.ApiFolderPath }}/${{ env.AzureWebAppPackagePath }}
 

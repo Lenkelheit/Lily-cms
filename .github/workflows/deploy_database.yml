@@ -4,7 +4,6 @@ env:
   BuildConfiguration: Release
   NetCoreVersion: 5.0.x
   DataAccessFolderPath: LilyCmsApi/LilyCms.DataAccess
-  MigrationsFolderPath: LilyCmsApi/LilyCms.DataAccess/Migrations
   DbContext: LilyCmsDbContext
   StartupProject: ../LilyCmsApi
 
@@ -15,7 +14,7 @@ on:
       - main
       - develop
     paths:
-      - LilyCmsApi/LilyCms.DataAccess/Migrations/**
+    - LilyCmsApi/LilyCms.DataAccess/Migrations/**
 
 jobs:
   update-database:

@@ -36,7 +36,8 @@ namespace LilyCms.BLL.Services
                 {
                     FirstName = payload.GivenName,
                     LastName = payload.FamilyName,
-                    Email = payload.Email
+                    Email = payload.Email, 
+                    Provider = authRequest.Provider
                 };
                 user = await _userDao.AddUserAsync(user);
             }
