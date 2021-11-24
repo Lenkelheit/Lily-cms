@@ -6,6 +6,7 @@ env:
   ApiFolderPath: LilyCmsApi
   AzureWebAppPackagePath: published-api
   AzureWebAppName: lily-cms-api
+  ArtifactName: artifact-api
 
 on:
   workflow_dispatch:
@@ -40,15 +41,28 @@ jobs:
       - name: Publish
         run: dotnet publish --no-build --configuration ${{ env.BuildConfiguration }} --output ${{ env.AzureWebAppPackagePath }}
 
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: ${{ env.ArtifactName }}
+          path: ${{ env.ApiFolderPath }}/${{ env.AzureWebAppPackagePath }}/**
+          if-no-files-found: error
+
   deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: ${{ env.ArtifactName }}
+          path: ${{ env.ArtifactName }}
+
       - name: Deploy Api to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AzureWebAppName }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_API }}
-          package: ${{ env.ApiFolderPath }}/${{ env.AzureWebAppPackagePath }}
+          package: ${{ env.ArtifactName }}
