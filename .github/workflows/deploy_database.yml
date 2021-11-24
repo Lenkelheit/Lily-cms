@@ -17,6 +17,7 @@ on:
 
 jobs:
   update-database:
+    name: Update database
     runs-on: ubuntu-latest
     defaults:
       run:
