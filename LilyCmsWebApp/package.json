@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build-prod": "ng build --configuration=production",
+    "build-zipped-prod": "npm i gzipper -g && ng build --configuration=production --output-path ./dist/LilyCmsWebApp-unzipped && gzipper compress ./dist/LilyCmsWebApp-unzipped ./dist/LilyCmsWebApp",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

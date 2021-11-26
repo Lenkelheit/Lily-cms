@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,11 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
             useClass: TokenInterceptor,
             multi: true
         },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LoaderInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

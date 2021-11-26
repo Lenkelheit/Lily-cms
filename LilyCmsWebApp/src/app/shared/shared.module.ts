@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const modules = [
     MatButtonModule,
@@ -31,7 +32,8 @@ const modules = [
     EditorModule,
     MatMenuModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
 ];
 
 @NgModule({
