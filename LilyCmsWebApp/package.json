@@ -4,8 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "copy-indexjs": "(npm list cpx -g || npm install cpx -g) && cpx index.js ./dist/LilyCmsWebApp",
+    "compress-build": "(npm list gzipper -g || npm install gzipper -g) && gzipper compress --brotli ./dist",
     "build-prod": "ng build --configuration=production",
-    "build-zipped-prod": "npm i gzipper -g && ng build --configuration=production --output-path ./dist/LilyCmsWebApp-unzipped && gzipper compress ./dist/LilyCmsWebApp-unzipped ./dist/LilyCmsWebApp",
+    "build-compressed-prod": "npm run build-prod && npm run copy-indexjs && npm run compress-build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,6 +27,8 @@
     "@tinymce/tinymce-angular": "^4.2.3",
     "angularx-social-login": "^3.5.7",
     "bootstrap": "^4.6.0",
+    "connect": "^3.7.0",
+    "connect-gzip-static": "^2.1.1",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "tinymce": "^5.8.0",
