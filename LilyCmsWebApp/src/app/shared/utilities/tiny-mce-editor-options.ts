@@ -1,15 +1,20 @@
 export const tinyMCEEditorOptions: Record<string, any> = {
     base_url: '/tinymce',
     suffix: '.min',
-    menubar: false,
+    menubar: true,
     selector: 'textarea', // todo
     plugins: [
         'autolink lists link image',
-        'code autoresize paste'
+        'code autoresize paste',
+        'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons'
     ],
     toolbar:
-        'bold italic underline strikethrough | \
-    numlist bullist | link image | code',
+        'undo redo | bold italic underline strikethrough | \
+    numlist bullist | link image | code | \
+    fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+    toolbar_mode: 'sliding',
+    importcss_append: true,
     paste_data_images: true,
     contextmenu: true,
     images_upload_handler: (blobInfo, success, failure) => {

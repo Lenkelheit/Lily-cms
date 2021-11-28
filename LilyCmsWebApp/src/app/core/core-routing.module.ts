@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { PageComponent } from './components/page/page.component';
 import { SiteComponent } from './components/site/site.component';
 import { CoreComponent } from './core.component';
@@ -28,10 +27,6 @@ const routes: Routes = [
                     pageDetails: UserPageResolver
                 }
             },
-            {
-                path: "**",
-                component: NotFoundComponent,
-            }
         ]
     }
 ];

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { AdminComponent } from './admin.component';
 import { PageContentComponent } from './components/page/page-content/page-content.component';
 import { PageDetailsComponent } from './components/page/page-details/page-details.component';
@@ -61,10 +60,6 @@ const routes: Routes = [
                     }
                 ]
             },
-            {
-                path: "**",
-                component: NotFoundComponent,
-            }
         ]
     }
 ];

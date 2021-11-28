@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
     },
     {
+        path: 'not-found',
+        component: NotFoundComponent,
+    },
+    {
         path: "**",
         component: NotFoundComponent,
     }
