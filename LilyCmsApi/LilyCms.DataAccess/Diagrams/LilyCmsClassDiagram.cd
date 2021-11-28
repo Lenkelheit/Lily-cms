@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="LilyCms.DataAccess.Models.Site">
-    <Position X="6" Y="0.75" Width="1.5" />
+    <Position X="6" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAABAAAgAMAgACAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAADAAABAAAgAMAgACAAAAgAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Models\Site.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.242" />
   </Class>
   <Class Name="LilyCms.DataAccess.Models.Page">
-    <Position X="6" Y="3.75" Width="1.5" />
+    <Position X="6" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAABEAAggMAAACAAAAAAAAAAAAAAAAgAAAACAAA=</HashCode>
+      <HashCode>AAACAAABEAAggMAAACAAAAAAAAAAAAAAAAgAAAECAAA=</HashCode>
       <FileName>Models\Page.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.21" />
   </Class>
   <Class Name="LilyCms.DataAccess.Models.PageArea">
-    <Position X="8" Y="2.25" Width="2.25" />
+    <Position X="8" Y="4.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAACAAABAgAwAMAAACAAAAAAAAAAAAAAAAAQAAAAAQA=</HashCode>
       <FileName>Models\PageArea.cs</FileName>
@@ -25,24 +25,39 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="LilyCms.DataAccess.Models.ContentType">
-    <Position X="8" Y="5.5" Width="1.5" />
+    <Position X="10" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\ContentType.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="LilyCms.DataAccess.Models.User">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LilyCms.DataAccess.Models.PageFeedback">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAFAAAQAAAAACAAAAAAAAAAAAAAAAAACAABAAA=</HashCode>
+      <FileName>Models\PageFeedback.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="LilyCms.DomainObjects.BaseEntity.IBaseEntity">
-    <Position X="4" Y="4" Width="1.5" />
+    <Position X="4" Y="5.5" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="LilyCms.DomainObjects.BaseEntity.IAuditable">
-    <Position X="4" Y="1.5" Width="1.5" />
+    <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Enum Name="LilyCms.DataAccess.Models.Enums.ContentType">
-    <Position X="8" Y="0.75" Width="1.5" />
+    <Position X="10" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Models\Enums\ContentType.cs</FileName>
     </TypeIdentifier>
   </Enum>
