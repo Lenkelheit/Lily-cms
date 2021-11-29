@@ -22,5 +22,6 @@ export const tinyMCEEditorOptions: Record<string, any> = {
     },
     images_dataimg_filter: (img) => {
         return img.hasAttribute('internal-blob');
-    }
+    },
+    deprecation_warnings: false
 };
