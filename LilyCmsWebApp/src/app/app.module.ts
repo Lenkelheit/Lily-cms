@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,10 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
         BrowserAnimationsModule,
         HttpClientModule,
         SharedModule,
-        SocialLoginModule
+        SocialLoginModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+          enabled: environment.production,
+        })
     ],
     providers: [
         {
